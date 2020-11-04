@@ -1,0 +1,7 @@
+A reimplementation of the legacy socket API, which replaces
+ the underlying implementation used by the net.Socket and
+ java.net.ServerSocket APIs with a simpler, more modern implementation
+ that is easy to debug and maintain.
+ The new implementation is intended to be easy to adapt
+ to work with user-mode threads, also known as fibers,
+ which are being explored in Project Loom.

@@ -1,0 +1,18 @@
+https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/invoke/MethodHandles.Lookup.html
+
+In Java 15, the introduction of Lookup::defineHiddenClass implies that the
+nest host of the lookup class must be determined eagerly, when the hidden
+class is defined as a nestmate of the lookup class. Both
+Lookup::defineHiddenClass and Class::getNestHost both determine the
+nest host of a class in a more resilient manner than the JVM did in Java 11;
+namely, the API simply treats a class as self-hosted if its purported
+nest membership is invalid. For consistency with the API,
+the JVM no longer throws LinkageError when a class's nest membership is
+invalid, and instead treats the class as self-hosted. This means
+that the JVM only throws IAE from access control (because a self-hosted
+class will not permit any other class to access its private members).
+This is the behavior expected by the vast majority of user code.
+JVM TI GetClassSignature returns a string that contains a ASCII dot (.)
+for a hidden class. JVM TI agents might need updating for hidden classes
+if they assume the returned string from GetClassSignature is a type
+descriptor conforming to JVMS 4.3.
