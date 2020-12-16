@@ -1,6 +1,17 @@
+* Introduction
+  * Name
+  * What you do?
+  * What is your experience with Java?
+  * What IDE do you usually use?
+  * How would grade (Novice, Intermediate, Advanced) 
+    your experience with Lambdas/Streams/Optionals?
+  * What have you been doing during pandemic?
+    (Streaming, Video Games, Board Games, 
+     Exercise Outdoor Activity)
+* SDKMan.io
 * JDK 9
   * JShell
-  * Immutable Collection Creation:
+  * Immutable Collection Creation
   * Module System
   * Process Handles
   * Flow API
@@ -29,3 +40,4 @@
    * Enhanced Pattern Matching
    * Hidden Classes
 * Project Loom: Fibers and Continuations
+* https://www.javadoc.io/doc/io.vavr/vavr/latest/io/vavr/control/Either.html
