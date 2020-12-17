@@ -32,6 +32,19 @@ public class EnhancedSwitchTest {
         assertThat(result).isEqualTo(31);
     }
 
+    @Test
+    void testEnhancedSwitchWithYield() {
+        var birthMonth = JANUARY;
+        var result = switch (birthMonth) {
+            case JANUARY, MARCH, MAY, JULY, AUGUST, OCTOBER, DECEMBER:
+                yield 31;
+            case APRIL, JUNE, SEPTEMBER, NOVEMBER:
+                yield 30;
+            default:
+                yield 29;
+        };
+        System.out.println(result);
+    }
 
     @Test
     void testEnhancedSwitch() {

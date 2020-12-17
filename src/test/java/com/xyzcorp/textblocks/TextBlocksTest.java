@@ -37,4 +37,24 @@ public class TextBlocksTest {
             Be sure to get the tickets before %3$tA, %3$tB %3$te of %3$tY""";
         System.out.format(statement, 30.0, 10, LocalDate.of(2020, 7, 3));
     }
+
+    @Test
+    void textBlocksCannotBeStartedOnTheSameLineAsTripleQuotes() {
+        var tripleQuoteError = """
+            I will start here
+            but I will have an error""";
+    }
+
+    @Test
+    void textBlocksWillRespectWhiteSpaceOnTheLeft() {
+        var jupitersMoons = """
+            The planet Jupiter's four largest moons are called the Galilean
+            satellites after Italian astronomer Galileo Galilei, who first
+            observed them in 1610. The German astronomer Simon Marius claimed
+            to have seen the moons around the same time, but he did not publish
+            his observations and so Galileo is given the credit for their
+            discovery. These large moons, named Io, Europa, Ganymede,
+            and Callisto, are each distinctive worlds.""";
+        System.out.println(jupitersMoons);
+    }
 }
