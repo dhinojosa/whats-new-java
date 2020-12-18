@@ -6,7 +6,7 @@
   * How would grade (Novice, Intermediate, Advanced) 
     your experience with Lambdas/Streams/Optionals?
   * What have you been doing during pandemic?
-    (Streaming, Video Games, Board Games, 
+    (Streaming, Video Games, Board Games, Books 
      Exercise Outdoor Activity)
 * SDKMan.io
 * JDK 9
