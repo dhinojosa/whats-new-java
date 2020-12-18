@@ -1,3 +1,7 @@
+# What's new in Java 2020
+
+## Outline
+
 * Introduction
   * Name
   * What you do?
@@ -6,8 +10,8 @@
   * How would grade (Novice, Intermediate, Advanced) 
     your experience with Lambdas/Streams/Optionals?
   * What have you been doing during pandemic?
-    (Streaming, Video Games, Board Games, Books 
-     Exercise Outdoor Activity)
+    (Streaming, Video Games, Board Games, Books, 
+     Exercise/Outdoor Activity)
 * SDKMan.io
 * JDK 9
   * JShell
@@ -19,7 +23,7 @@
   * HTTP2 Client
 * JDK 10
   * Type inference
-  * Collectors changes
+  * Collector's changes
   * `copyOf`
 * JDK 11
   * String class additions
@@ -40,4 +44,3 @@
    * Enhanced Pattern Matching
    * Hidden Classes
 * Project Loom: Fibers and Continuations
-* https://www.javadoc.io/doc/io.vavr/vavr/latest/io/vavr/control/Either.html
