@@ -47,12 +47,10 @@ public class MyPublisherTest {
 
 
         myPublisher.subscribe(new Flow.Subscriber<Long>() {
-            private Flow.Subscription subscription;
 
             @Override
             public void onSubscribe(Flow.Subscription subscription) {
-                this.subscription = subscription;
-                this.subscription.request(1000);
+                subscription.request(1000);
             }
 
             @Override
@@ -72,6 +70,6 @@ public class MyPublisherTest {
             }
         });
 
-        Thread.sleep(60_000);
+        Thread.sleep(300);
     }
 }
