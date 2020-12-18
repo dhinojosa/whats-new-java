@@ -14,23 +14,39 @@ public class MyPublisher implements Flow.Publisher<Long> {
 
     @Override
     public void subscribe(Flow.Subscriber<? super Long> subscriber) {
-         subscriber.onSubscribe(new Flow.Subscription() {
-             AtomicLong count = new AtomicLong(0);
-             AtomicBoolean done = new AtomicBoolean(false);
+        subscriber.onSubscribe(new Flow.Subscription() {
+            final AtomicBoolean done = new AtomicBoolean(false);
+            final AtomicBoolean started = new AtomicBoolean(false);
+            final AtomicLong counter = new AtomicLong(0L);
+            final AtomicLong requests = new AtomicLong(0L);
 
-             @Override
-             public void request(long n) {
-                 executorService.submit(() -> {
-                     while (!done.get() && ((count.incrementAndGet()) < n)) {
-                         subscriber.onNext(count.get());
-                     }
-                 });
-             }
+            @Override
+            public void request(long n) {
+                requests.addAndGet(n);
+                if (!started.get()) {
+                    startLoop();
+                    started.set(true);
+                }
+            }
 
-             @Override
-             public void cancel() {
+            private void startLoop() {
+                System.out.println("Hello");
+                executorService.submit(() -> {
+                    while (!done.get()) {
+                        if (requests.decrementAndGet() >= 0) {
+                            System.out.println("Requests: " + requests.get());
+                            subscriber.onNext(counter.incrementAndGet());
+                        }
+                    }
+                    subscriber.onComplete();
+                    started.set(false);
+                });
+            }
+
+            @Override
+            public void cancel() {
                 done.set(true);
-             }
-         });
+            }
+        });
     }
 }
