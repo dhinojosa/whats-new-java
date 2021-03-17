@@ -9,7 +9,7 @@
   * What IDE do you usually use?
   * How would grade (Novice, Intermediate, Advanced) 
     your experience with Lambdas/Streams/Optionals?
-  * What versioning are you using for work?  
+  * What Java version are you using for work?  
 * SDKMan.io
 * JDK 9
   * JShell
