@@ -1,10 +1,5 @@
 package com.xyzcorp.httpclient;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,10 +8,10 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.StreamSupport;
+import java.util.concurrent.TimeUnit;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class HttpClientTest {
     String urlString = "https://gist.githubusercontent" +
@@ -62,64 +57,6 @@ public class HttpClientTest {
         Thread.sleep(1000);
     }
 
-
-    @Test
-    public void testDeserializationOfJson() throws JsonProcessingException {
-        var json = """
-            {
-                "AD": {
-                    "currency": {
-                        "primary": "EUR"
-                    },
-                    "iso": {
-                        "code2": "AD",
-                        "code3": "AND",
-                        "num": "020"
-                    },
-                    "languages": [
-                        "ca"
-                    ],
-                    "name": "Andorra",
-                    "region": "Europe"
-                },
-                "AE": {
-                    "currency": {
-                        "primary": "AED"
-                    },
-                    "iso": {
-                        "code2": "AE",
-                        "code3": "ARE",
-                        "num": "784"
-                    },
-                    "languages": [
-                        "ar"
-                    ],
-                    "name": "United Arab Emirates",
-                    "region": "Asia"
-                }
-           }""";
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        TypeReference<HashMap<String, Country>> ref = new TypeReference<>() {};
-        HashMap<String, Country> stringCountryHashMap =
-            objectMapper.readValue(json, ref);
-
-        System.out.println(stringCountryHashMap);
-
-    }
-
-    public Map<String, Country> processJson(String json) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        TypeReference<HashMap<String, Country>> ref = new TypeReference<>() {};
-        try {
-            return objectMapper.readValue(json, ref);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return new HashMap<>();
-    }
-
-
     @Test
     void testSimpleAsyncGetJson() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
@@ -134,11 +71,15 @@ public class HttpClientTest {
             client.sendAsync(request,
                 HttpResponse.BodyHandlers.ofString());
 
-        future
+        CompletableFuture<String> stringCompletableFuture = future
             .thenApply(HttpResponse::body)
-            .thenApply(this::processJson)
+            .thenApply(JSONDeserializer::processJson)
+            .thenApplyAsync(m -> CountryFunctions.findLanguagesByRegion(m, "en", "Americas"));
+
+        stringCompletableFuture
+            .orTimeout(10, TimeUnit.SECONDS)
             .thenAccept(System.out::println);
 
-        Thread.sleep(4000);
+        Thread.sleep(5000);
     }
 }

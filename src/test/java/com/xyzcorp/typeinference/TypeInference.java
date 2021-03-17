@@ -81,19 +81,4 @@ public class TypeInference {
             System.out.printf("Before: %d, After: %d, Negative: %d\n",
                 o.before, o.after, o.negative));
     }
-
-    @Test
-    void testEnhancedForLoops() {
-        List<String> myList = Arrays.asList("a", "b", "c");
-        for (var element : myList) {
-            System.out.println(element);
-        }
-    }
-
-    @Test
-    void testClassicForLoops() {
-        for (var counter = 0; counter < 10; counter++) {
-            System.out.println(counter);
-        }
-    }
 }

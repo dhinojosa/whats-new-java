@@ -30,11 +30,9 @@ public class MyPublisher implements Flow.Publisher<Long> {
             }
 
             private void startLoop() {
-                System.out.println("Hello");
                 executorService.submit(() -> {
                     while (!done.get()) {
                         if (requests.decrementAndGet() >= 0) {
-                            System.out.println("Requests: " + requests.get());
                             subscriber.onNext(counter.incrementAndGet());
                         }
                     }
