@@ -9,9 +9,7 @@
   * What IDE do you usually use?
   * How would grade (Novice, Intermediate, Advanced) 
     your experience with Lambdas/Streams/Optionals?
-  * What have you been doing during pandemic?
-    (Streaming, Video Games, Board Games, Books, 
-     Exercise/Outdoor Activity)
+  * What versioning are you using for work?  
 * SDKMan.io
 * JDK 9
   * JShell
