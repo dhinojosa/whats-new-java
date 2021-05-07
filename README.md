@@ -1,4 +1,4 @@
-# What's new in Java 2020
+# What's new in Java 2021
 
 ## Outline
 
@@ -9,7 +9,8 @@
   * What IDE do you usually use?
   * How would grade (Novice, Intermediate, Advanced) 
     your experience with Lambdas/Streams/Optionals?
-  * What Java version are you using for work?  
+  * What Java version are you using for work/home?  
+  * What other JVM languages do you use?
 * SDKMan.io
 * JDK 9
   * JShell
