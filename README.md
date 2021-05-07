@@ -1,4 +1,4 @@
-# What's new in Java 2020
+# What's new in Java 2021
 
 ## Outline
 
