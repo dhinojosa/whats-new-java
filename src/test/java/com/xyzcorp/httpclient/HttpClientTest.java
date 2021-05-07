@@ -14,9 +14,7 @@ import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HttpClientTest {
-    String urlString = "https://gist.githubusercontent" +
-        ".com/dhinojosa/877425fb98a939a816e2c56f02bbedd0/raw" +
-        "/84158bf19d58dca011cecf267eae0307232b76f3/countries.json";
+    String urlString = "https://gist.githubusercontent.com/dhinojosa/877425fb98a939a816e2c56f02bbedd0/raw/84158bf19d58dca011cecf267eae0307232b76f3/countries.json";
 
     @Test
     void testRequest() throws IOException, InterruptedException {

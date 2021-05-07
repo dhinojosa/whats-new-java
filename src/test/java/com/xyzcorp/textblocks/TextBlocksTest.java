@@ -11,6 +11,39 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TextBlocksTest {
+    String sampleJSON = """
+        {
+            "AD": {
+                "currency": {
+                    "primary": "EUR"
+                },
+                "iso": {
+                    "code2": "AD",
+                    "code3": "AND",
+                    "num": "020"
+                },
+                "languages": [
+                    "ca"
+                ],
+                "name": "Andorra",
+                "region": "Europe"
+            },
+            "AE": {
+                "currency": {
+                    "primary": "AED"
+                },
+                "iso": {
+                    "code2": "AE",
+                    "code3": "ARE",
+                    "num": "784"
+                },
+                "languages": [
+                    "ar"
+                ],
+                "name": "United Arab Emirates",
+                "region": "Asia"
+            }
+        }""";
 
     @Test
     void testTextBlockStandard() {
@@ -28,6 +61,7 @@ public class TextBlocksTest {
                   .collect(Collectors.groupingBy(s -> Character.toLowerCase(s.charAt(0))));
 
         assertThat(map).containsValues(List.of("red", "roses"));
+        System.out.println(map);
     }
 
     @Test
@@ -42,7 +76,8 @@ public class TextBlocksTest {
     void textBlocksCannotBeStartedOnTheSameLineAsTripleQuotes() {
         var tripleQuoteError = """
             I will start here
-            but I will have an error""";
+              but I will have an error""";
+        System.out.println(tripleQuoteError);
     }
 
     @Test

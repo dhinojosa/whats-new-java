@@ -56,4 +56,7 @@ public class EnhancedSwitchTest {
         };
         System.out.println(result);
     }
+
+
+
 }
