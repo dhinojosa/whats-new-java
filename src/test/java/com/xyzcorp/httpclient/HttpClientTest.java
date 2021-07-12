@@ -52,7 +52,7 @@ public class HttpClientTest {
             .thenApply(HttpResponse::body)
             .thenAccept(System.out::println);
 
-        Thread.sleep(1000);
+        Thread.sleep(30000);
     }
 
     @Test
@@ -75,9 +75,9 @@ public class HttpClientTest {
             .thenApplyAsync(m -> CountryFunctions.findLanguagesByRegion(m, "en", "Americas"));
 
         stringCompletableFuture
-            .orTimeout(10, TimeUnit.SECONDS)
+            .orTimeout(15, TimeUnit.SECONDS)
             .thenAccept(System.out::println);
 
-        Thread.sleep(5000);
+        Thread.sleep(15000);
     }
 }
