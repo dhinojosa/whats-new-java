@@ -21,7 +21,7 @@ public class FunctionalStreamTest {
     @Test
     void testOptionalsWithPossibleException() {
         System.out.println(
-            Stream.of(1, 40, 0, 20, 10)
+            Stream.of(1, 50, 0, 20, 10)
                   .flatMap(i -> {
                       try {
                           return Stream.of(100 / i);
@@ -36,7 +36,7 @@ public class FunctionalStreamTest {
     void testOptionalStream() {
         Stream<Optional<Integer>> os =
             Stream.of(Optional.of(2), Optional.empty(), Optional.of(30));
-        Stream<Integer> integerStream = os.flatMap(integer -> integer.stream());
+        Stream<Integer> integerStream = os.flatMap(Optional::stream);
         System.out.println(integerStream.collect(Collectors.toList()));
     }
 
