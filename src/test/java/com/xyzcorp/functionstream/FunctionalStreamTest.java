@@ -42,9 +42,11 @@ public class FunctionalStreamTest {
 
     @Test
     void testTakeWhile() {
-        Stream.iterate(0, integer -> integer + 1)
-              .takeWhile(i -> i < 100)
-              .collect(Collectors.toSet());
+        Stream
+            .iterate(0, integer -> integer + 1)
+            .takeWhile(i -> i < 100)
+            .map(String::valueOf)
+            .collect(Collectors.toSet());
     }
 
     @Test

@@ -63,9 +63,12 @@ public class TypeInference {
     @Test
     void nonDenotableTypes() {
         var a = new Object() {
-            public String name;
-            public int age;
+            String name = "Larry Java";
+            int age = 40;
         };
+
+        System.out.println(a.name);
+        System.out.println(a.age);
     }
 
     @Test

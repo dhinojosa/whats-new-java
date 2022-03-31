@@ -34,7 +34,7 @@ public class EnhancedSwitchTest {
 
     @Test
     void testEnhancedSwitchWithYield() {
-        var birthMonth = JANUARY;
+        final var birthMonth = JANUARY;
         var result = switch (birthMonth) {
             case JANUARY, MARCH, MAY, JULY, AUGUST, OCTOBER, DECEMBER:
                 yield 31;
@@ -57,6 +57,16 @@ public class EnhancedSwitchTest {
         System.out.println(result);
     }
 
-
-
+    @Test
+    void testPerformingActionWithinACase() {
+        var birthMonth = JANUARY;
+        var y = switch(birthMonth) {
+            case JANUARY :
+                System.out.println("Did something first");
+                yield 31;
+            default:
+                System.out.println("Only valid in leap years");
+                yield 29;
+        };
+    }
 }
