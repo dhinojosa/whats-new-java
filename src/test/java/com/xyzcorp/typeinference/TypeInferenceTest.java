@@ -5,19 +5,23 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class TypeInference {
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class TypeInferenceTest {
+    @SuppressWarnings("RedundantTypeArguments")
     @Test
     void testBeforeTypeInference() {
         List<String> cs = Collections.<String>emptyList();
+        assertThat(cs).isEmpty();
     }
 
     @Test
     void testAfterTypeInference() {
         var cs = Collections.<String>emptyList();
+        assertThat(cs).isEmpty();
     }
 
     @Test
@@ -35,6 +39,7 @@ public class TypeInference {
         }
     }
 
+    @SuppressWarnings("unused")
     @Test
     void testPolymorphismWithVar() {
         var oregonian = new Oregonian();
@@ -57,20 +62,21 @@ public class TypeInference {
      * In the following, what is the type?
      * It can’t be an Object, because we can call name and age on it,
      * Instead, the true type is non-denotable — it
-     * doesn’t have a name we can use as the type of a variable in Java code.
+     * doesn't have a name we can use as the type of variable in Java code.
      * At runtime the type is just a compiler-assigned placeholder.
      */
     @Test
     void nonDenotableTypes() {
         var a = new Object() {
-            String name = "Larry Java";
-            int age = 40;
+            final String name = "Larry Java";
+            final int age = 40;
         };
 
         System.out.println(a.name);
         System.out.println(a.age);
     }
 
+    @SuppressWarnings("SimplifyStreamApiCallChains")
     @Test
     void usingANonDenotableTypeToPassInAction() {
         var result =
