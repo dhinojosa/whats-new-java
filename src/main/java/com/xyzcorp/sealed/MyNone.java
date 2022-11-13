@@ -12,15 +12,3 @@ public final class MyNone implements MyOption<Void> {
     }
 }
 
-
-//List<A>
-//Concat(A head, List<A> tail)
-//Nil
-
-
-//Account
-//enum Account
-// Checking(accountNumber:String)
-// Saving(accountNumber:String)
-// IRA(accountNumber:String, taxWithdrawal)
-
