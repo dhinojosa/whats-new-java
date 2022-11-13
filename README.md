@@ -1,4 +1,4 @@
-# What's new in Java 2021
+# What's new in Java 2022
 
 ## Outline
 
@@ -27,19 +27,41 @@
 * JDK 11
   * String class additions
   * Type inference lambda-variables
+  * HTTPClient API
+  * Files.readString() and Files.writeString()
+  * Optional.isEmpty()
+  * Collection.toArray(IntFunction)
 * JDK 12
-  * `switch` expressions
+  * `switch` expressions (Preview)
   * `teeing` collector
+  * Files.mismatch(Path, Path)
 * JDK 13
-  * Text Blocks
+  * Text Blocks (First Preview)
   * Reimplemented Socket API
+  * FileSystems.newFileSystem() Method
+  * switch` expressions (Second Preview)
 * JDK 14
    * Records
    * Text Blocks
    * Enhanced Pattern Matching
    * Reimplemented DataSocket API
+   * -XX:+ShowCodeDetailsInExceptionMessages
 * JDK 15
-   * Sealed Classes
+   * Sealed Classes (First Preview)
    * Enhanced Pattern Matching
    * Hidden Classes
-* Project Loom: Fibers and Continuations
+* JDK 16
+   * `Stream.toList`
+   * Vector API (First Incubator)
+   * Sealed Classes (Second Preview)
+   * jpackage
+* JDK 17
+   *  Pattern Matching for Switch (
+   *  Sealed Classes
+   * Enhanced Pseudo-Random Number Generators
+   * Strongly Encapsulate JDK Internals
+* JDK 18
+   * Simple Web Server
+   * Code Snippets in Java API Documentation
+* JDK 19 
+   * Project Loom: Fibers and Continuations
