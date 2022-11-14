@@ -6,7 +6,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Flow;
 
-public class MyPublisherTest {
+public class MyPublisherFlowTest {
 
     @Test
     public void testUsingPublisher() throws InterruptedException {
@@ -14,8 +14,8 @@ public class MyPublisherTest {
                 Executors.newFixedThreadPool(100);
 
 
-        MyPublisher myPublisher = new MyPublisher(executorService);
-        myPublisher.subscribe(new Flow.Subscriber<Long>() {
+        MyPublisherFlow myPublisherFlow = new MyPublisherFlow(executorService);
+        myPublisherFlow.subscribe(new Flow.Subscriber<>() {
             private Flow.Subscription subscription;
 
             @Override
@@ -28,7 +28,7 @@ public class MyPublisherTest {
             public void onNext(Long item) {
                 if (item < 0) throw new RuntimeException("Nope");
                 System.out.println("S1: (" +
-                        Thread.currentThread().getName() + ")" + item);
+                    Thread.currentThread().getName() + ")" + item);
                 if (item == 350) {
                     this.subscription.cancel();
                 }
@@ -46,7 +46,7 @@ public class MyPublisherTest {
         });
 
 
-        myPublisher.subscribe(new Flow.Subscriber<Long>() {
+        myPublisherFlow.subscribe(new Flow.Subscriber<>() {
 
             @Override
             public void onSubscribe(Flow.Subscription subscription) {
@@ -56,7 +56,7 @@ public class MyPublisherTest {
             @Override
             public void onNext(Long item) {
                 System.out.println("S2: (" +
-                        Thread.currentThread().getName() + ")" + item);
+                    Thread.currentThread().getName() + ")" + item);
             }
 
             @Override

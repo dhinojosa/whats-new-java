@@ -82,7 +82,7 @@ public class TextBlocksTest {
 
     @Test
     void textBlocksWillRespectWhiteSpaceOnTheLeft() {
-        var jupitersMoons = """
+        @SuppressWarnings("SpellCheckingInspection") var jupitersMoons = """
             The planet Jupiter's four largest moons are called the Galilean
             satellites after Italian astronomer Galileo Galilei, who first
             observed them in 1610. The German astronomer Simon Marius claimed

@@ -31,6 +31,7 @@ public class CopyOfTest {
      * for java.util.Optional, java.util.OptionalDouble,
      * java.util.OptionalInt and java.util.OptionalLong
      */
+    @SuppressWarnings("ConstantConditions")
     @Test
     void testOrElseThrow() {
         assertThatThrownBy(() -> Stream.of(1,2,3,4)

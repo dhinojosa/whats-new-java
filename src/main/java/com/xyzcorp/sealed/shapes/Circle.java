@@ -1,7 +1,7 @@
-package com.xyzcorp.sealed2;
+package com.xyzcorp.sealed.shapes;
 
 public final class Circle extends Shape {
-    int radius;
+    private final int radius;
     public Circle(int radius) {
         this.radius = radius;
     }

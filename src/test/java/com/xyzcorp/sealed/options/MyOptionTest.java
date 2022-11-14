@@ -1,9 +1,11 @@
-package com.xyzcorp.sealed;
+package com.xyzcorp.sealed.options;
 
 
+import com.xyzcorp.sealed.optionals.MyNone;
+import com.xyzcorp.sealed.optionals.MySome;
 import org.junit.jupiter.api.Test;
 
-public class SealedClassTest {
+public class MyOptionTest {
 
     public String doMatch(Object o) {
         if (o instanceof MySome<?> ms) {

@@ -5,10 +5,11 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collector;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class FunctionalStreamTest {
     @Test
@@ -26,7 +27,7 @@ public class FunctionalStreamTest {
                       try {
                           return Stream.of(100 / i);
                       } catch (ArithmeticException ae) {
-                          return Stream.<Integer>empty();
+                          return Stream.empty();
                       }
                   })
                   .collect(Collectors.toList()));
@@ -40,13 +41,24 @@ public class FunctionalStreamTest {
         System.out.println(integerStream.collect(Collectors.toList()));
     }
 
+    @SuppressWarnings("SimplifyStreamApiCallChains")
     @Test
     void testTakeWhile() {
-        Stream
+        Set<String> result = Stream
             .iterate(0, integer -> integer + 1)
             .takeWhile(i -> i < 100)
             .map(String::valueOf)
             .collect(Collectors.toSet());
+        assertThat(result).isEqualTo(Set.of("88",
+            "89", "90", "91", "92", "93", "94", "95", "96", "97", "10", "98",
+            "11", "99", "12", "13", "14", "15", "16", "17", "18", "19", "0",
+            "1", "2", "3", "4", "5", "6", "7", "8", "9", "20", "21", "22",
+            "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33",
+            "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44",
+            "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55",
+            "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66",
+            "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77",
+            "78", "79", "80", "81", "82", "83", "84", "85", "86", "87"));
     }
 
     @Test

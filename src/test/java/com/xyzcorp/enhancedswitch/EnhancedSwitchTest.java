@@ -2,13 +2,20 @@ package com.xyzcorp.enhancedswitch;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.Month;
+
 import static java.time.Month.*;
+import static java.time.temporal.ChronoUnit.YEARS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class EnhancedSwitchTest {
+
+    private final Month birthMonth = JANUARY;
+
+    @SuppressWarnings("EnhancedSwitchMigration")
     @Test
     void testBasicSwitch() {
-        var birthMonth = JANUARY;
         var result = 0;
         switch (birthMonth) {
             case JANUARY:
@@ -34,7 +41,6 @@ public class EnhancedSwitchTest {
 
     @Test
     void testEnhancedSwitchWithYield() {
-        final var birthMonth = JANUARY;
         var result = switch (birthMonth) {
             case JANUARY, MARCH, MAY, JULY, AUGUST, OCTOBER, DECEMBER:
                 yield 31;
@@ -48,7 +54,6 @@ public class EnhancedSwitchTest {
 
     @Test
     void testEnhancedSwitch() {
-        var birthMonth = JANUARY;
         var result = switch (birthMonth) {
             case JANUARY, MARCH, MAY, JULY, AUGUST, OCTOBER, DECEMBER -> 31;
             case APRIL, JUNE, SEPTEMBER, NOVEMBER -> 30;
@@ -59,14 +64,17 @@ public class EnhancedSwitchTest {
 
     @Test
     void testPerformingActionWithinACase() {
-        var birthMonth = JANUARY;
-        var y = switch(birthMonth) {
-            case JANUARY :
+        int year = LocalDate.now().getYear();
+        var result = switch (birthMonth) {
+            case JANUARY, MARCH, MAY, JULY, AUGUST, OCTOBER, DECEMBER:
                 System.out.println("Did something first");
                 yield 31;
+            case APRIL, JUNE, SEPTEMBER, NOVEMBER:
+                System.out.println("Days that have 30 days");
+                yield 30;
             default:
-                System.out.println("Only valid in leap years");
-                yield 29;
+                yield 28;
         };
+        assertThat(result).isEqualTo(31);
     }
 }

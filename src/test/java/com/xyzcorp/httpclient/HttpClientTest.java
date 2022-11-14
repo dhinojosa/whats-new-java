@@ -11,8 +11,6 @@ import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class HttpClientTest {
     String urlString = "https://gist.githubusercontent.com/dhinojosa/877425fb98a939a816e2c56f02bbedd0/raw/84158bf19d58dca011cecf267eae0307232b76f3/countries.json";
 
@@ -35,7 +33,7 @@ public class HttpClientTest {
     @Test
     @DisplayName("Run an example connecting to a simple" +
         " web endpoint using GET asynchronously and returning a String")
-    void testSimpleAsyncGet() throws IOException, InterruptedException {
+    void testSimpleAsyncGet() throws InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
 
         HttpRequest request =
@@ -56,7 +54,7 @@ public class HttpClientTest {
     }
 
     @Test
-    void testSimpleAsyncGetJson() throws IOException, InterruptedException {
+    void testSimpleAsyncGetJson() throws InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
 
         HttpRequest request =

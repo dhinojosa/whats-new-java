@@ -1,20 +1,23 @@
 package com.xyzcorp.flow;
 
+import org.reactivestreams.Publisher;
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
+
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Flow;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class MyPublisher implements Flow.Publisher<Long> {
-    private ExecutorService executorService;
+public class MyPublisherReactive implements Publisher<Long> {
+    private final ExecutorService executorService;
 
-    public MyPublisher(ExecutorService executorService) {
+    public MyPublisherReactive(ExecutorService executorService) {
         this.executorService = executorService;
     }
 
     @Override
-    public void subscribe(Flow.Subscriber<? super Long> subscriber) {
-        subscriber.onSubscribe(new Flow.Subscription() {
+    public void subscribe(Subscriber<? super Long> subscriber) {
+        subscriber.onSubscribe(new Subscription() {
             final AtomicBoolean done = new AtomicBoolean(false);
             final AtomicLong counter = new AtomicLong(0);
             final AtomicLong requests = new AtomicLong(0);

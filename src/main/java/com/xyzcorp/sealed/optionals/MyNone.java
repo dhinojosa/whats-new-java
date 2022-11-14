@@ -1,4 +1,4 @@
-package com.xyzcorp.sealed;
+package com.xyzcorp.sealed.optionals;
 
 import java.util.StringJoiner;
 

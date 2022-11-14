@@ -1,8 +1,8 @@
-package com.xyzcorp.sealed2;
+package com.xyzcorp.sealed.shapes;
 
 public final class Triangle extends Shape {
-    private int base;
-    private int height;
+    private final int base;
+    private final int height;
 
     public Triangle(int base, int height) {
         this.base = base;
