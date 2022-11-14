@@ -6,9 +6,8 @@
 tasks:
   - name: Setup & Build
     before: sdk install java 19-tem < /dev/null
-    init: mvn install -DskipTests=false
+    init: mvn install -DskipTests=true
 vscode:
   extensions:
-    - "redhat.java"
     - "vscjava.vscode-java-pack"
     - "redhat.fabric8-analytics"
