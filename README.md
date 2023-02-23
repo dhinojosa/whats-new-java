@@ -22,21 +22,31 @@
   * Functional and Stream Additions
   * HTTP2 Client
   * Var Handles [JEP 193](https://openjdk.java.net/jeps/193)
+  * `IntStream CharSequence.chars()`
 * JDK 10
   * Type inference
-  * Collector's changes
-  * `copyOf`
+  * `Collectors.toUnmodifiableList`, `Collectors.toUnmodifiableMap`, `Collectors.toUnmodifiableSet`
+  * `copyOf` in `List`, `Map`, and `Set`
 * JDK 11
-  * String class additions
+  * String class additions:
+     * `lines()` 
+     * `isBlank()` 
+     * `repeat()`
+     * `strip()`
+     * `stripLeading()`
+     * `stripTrailing()`
+  * `Predicate.not(Predicate)`
   * Type inference lambda-variables
   * HTTPClient API
   * `Files.readString()` and `Files.writeString()`
   * `Optional.isEmpty()`
   * `Collection.toArray(IntFunction)`
+  * Null-Based Input, Output Stream and Readers
 * JDK 12
   * `switch` expressions (Preview)
   * `teeing` collector
   * `Files.mismatch(Path, Path)`
+  * Microbenchmark Suite [JEP 230](https://openjdk.java.net/jeps/230)
 * JDK 13
   * Text Blocks (First Preview) [JEP 368](https://openjdk.java.net/jeps/368)
   * Reimplemented Socket API [JEP 353](https://openjdk.java.net/jeps/353)
