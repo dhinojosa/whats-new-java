@@ -16,7 +16,7 @@ public class EnhancedSwitchTest {
     @SuppressWarnings("EnhancedSwitchMigration")
     @Test
     void testBasicSwitch() {
-        var result = 0;
+        int result = 0;
         switch (birthMonth) {
             case JANUARY:
             case MARCH:
