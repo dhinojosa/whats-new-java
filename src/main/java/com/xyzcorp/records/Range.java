@@ -5,4 +5,8 @@ record Range(int min, int max) {
         if (min > max)
             throw new IllegalArgumentException("Max must be >= min");
     }
+
+    public Range(int max) {
+        this(0, max);
+    }
 }
