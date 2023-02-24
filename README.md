@@ -23,6 +23,7 @@
   * HTTP2 Client
   * Var Handles [JEP 193](https://openjdk.java.net/jeps/193)
   * `IntStream CharSequence.chars()`
+  * `Objects.checkIndex()`
 * JDK 10
   * Type inference
   * `Collectors.toUnmodifiableList`, `Collectors.toUnmodifiableMap`, `Collectors.toUnmodifiableSet`
@@ -66,7 +67,7 @@
    * Text Blocks (Preview) [JEP 378](https://openjdk.java.net/jeps/378)
    * Hidden Classes [JEP 371](https://openjdk.java.net/jeps/371)
 * JDK 16
-   * `Stream.toList`
+   * `Stream.toList`, `Stream.toArray`
    * Vector API (First Incubator) [JEP 338](https://openjdk.java.net/jeps/338)
    * Records (Final) [JEP 395](https://openjdk.java.net/jeps/395)
    * Sealed Classes (Second Preview) [JEP 397](https://openjdk.java.net/jeps/397)
@@ -78,18 +79,24 @@
    * Enhanced Pseudo-Random Number Generators [JEP 356](https://openjdk.java.net/jeps/356)
    * Vector API (Second Incubator) [JEP 414](https://openjdk.java.net/jeps/414)
    * Foreign Function & Memory API (First Incubator) [JEP 412](https://openjdk.java.net/jeps/412)
+   * `java.util.HexFormat`
+   * `Process.inputReader()`, `Process.outputWriter()`, `Process.errorReader()`
 * JDK 18
    * Pattern Matching for Switch (Second Preview) [JEP 420](https://openjdk.java.net/jeps/420)
    * Simple Web Server [JEP 408](https://openjdk.java.net/jeps/408)
    * Code Snippets in Java API Documentation [JEP 413](https://openjdk.java.net/jeps/413)
    * Foreign Function & Memory API (Second Incubator) [JEP 412](https://openjdk.java.net/jeps/419)
    * Vector API (Third Incubator) [JEP 417](https://openjdk.java.net/jeps/417)
+   * `Math.ceilDiv`, `Math.ceilDivExact`, `Math.ceilMod`, `Math.divideExact`, `Math.floorDivExact`, `Math.unsignedMultiplyHigh` 
+   * `StrictMath.ceilDiv`, `StrictMath.ceilDivExact`, `StrictMath.ceilMod`, `StrictMath.divideExact`, `StrictMath.floorDivExact`, `StrictMath.unsignedMultiplyHigh`
+   * `FileInputStream.transferTo(OutputStream)`
 * JDK 19 
    * Project Loom Virtual Threads (First Preview) [JEP 425](https://openjdk.java.net/jeps/425)
    * Pattern Matching for Switch (Third Preview) [JEP 427](https://openjdk.java.net/jeps/427)
    * Foreign Function & Memory API (First Preview) [JEP 424](https://openjdk.java.net/jeps/424)
    * Vector API (Fourth Incubator) [JEP 426](https://openjdk.java.net/jeps/426)
    * Project Loom Structured Concurrency (First Incubator) [JEP 428](https://openjdk.java.net/jeps/428)
+   * `CompletableFuture.exceptionNow()`, `CompletableFuture.resultNow()`, `CompletableFuture.state()`
 * JDK 20
    * Pattern Matching for Switch (Forth Preview) [JEP 433](https://openjdk.java.net/jeps/433)
    * Record Patterns (Second Preview)  [JEP 432](https://openjdk.java.net/jeps/432)

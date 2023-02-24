@@ -1,4 +1,4 @@
-package com.xyzcorp.collectors;
+package com.xyzcorp.functionstream;
 
 import org.junit.jupiter.api.Test;
 
@@ -7,12 +7,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class NewCollectorsTest {
+public class CollectorsTest {
     @SuppressWarnings("SimplifyStreamApiCallChains")
     @Test
     void testToUnmodifiableList() {
@@ -42,15 +40,5 @@ public class NewCollectorsTest {
                          i -> Math.pow(i, 3))
                      );
         System.out.println(map);
-    }
-
-    @Test
-    void testTeeing() {
-        double average = Stream.of(1, 4, 2, 7, 4, 6, 5)
-                               .collect(teeing(
-                                   summingDouble(i -> i),
-                                   counting(),
-                                   (sum, n) -> sum / n));
-        System.out.println(average);
     }
 }

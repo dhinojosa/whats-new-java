@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class FunctionalStreamTest {
     @Test
@@ -82,10 +83,41 @@ public class FunctionalStreamTest {
     void testTeeing() {
         Double result =
             Stream.of(100, 100, 90, 50, 40, 80, 90, 100)
-                             .collect(Collectors.teeing(
-                                 Collectors.summingDouble(value -> value),
-                                 Collectors.counting(),
-                                 (sum, count) -> sum / count));
+                  .collect(Collectors.teeing(
+                      Collectors.summingDouble(value -> value),
+                      Collectors.counting(),
+                      (sum, count) -> sum / count));
         System.out.println(result);
+    }
+
+    @Test
+    void testMapMulti() {
+        Stream<Integer> integerStream =
+            Stream.of(1, 2, 3, 4, 5).mapMulti((integer, consumer) -> {
+                if (integer % 2 == 0) {
+                    consumer.accept(integer);
+                    consumer.accept(integer * 2);
+                } else {
+                    consumer.accept(integer);
+                }
+            });
+        assertThat(integerStream.toList()).isEqualTo(List.of(1, 2, 4, 3, 4, 8
+            , 5));
+    }
+
+    /**
+     * If a value is present, returns the value, otherwise throws an
+     * exception produced by the exception supplying function. Available
+     * for java.util.Optional, java.util.OptionalDouble,
+     * java.util.OptionalInt and java.util.OptionalLong
+     */
+    @SuppressWarnings("ConstantConditions")
+    @Test
+    void testOrElseThrow() {
+        assertThatThrownBy(() -> Stream.of(1, 2, 3, 4)
+                                       .filter(i -> i > 10)
+                                       .findFirst()
+                                       .orElseThrow(() -> new RuntimeException("No number higher than 10")))
+            .isInstanceOf(RuntimeException.class);
     }
 }
