@@ -49,7 +49,7 @@
   * `Files.mismatch(Path, Path)`
   * Microbenchmark Suite [JEP 230](https://openjdk.java.net/jeps/230)
 * [JDK 13](https://docs.oracle.com/en/java/javase/13/docs/api/)
-  * Text Blocks (First Preview) [JEP 368](https://openjdk.java.net/jeps/368)
+  * Text Blocks (First Preview) [JEP 355](https://openjdk.java.net/jeps/355)
   * Reimplemented Socket API [JEP 353](https://openjdk.java.net/jeps/353)
   * `FileSystems.newFileSystem()` Method
   * `switch` expressions (Second Preview) [JEP 254](https://openjdk.java.net/jeps/354)
