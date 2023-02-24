@@ -12,23 +12,23 @@
   * What Java version are you using for work/home?  
   * What other JVM languages do you use?
 * SDKMan.io
-* JDK 9
+* [Java Almanac](https://javaalmanac.io/)
+* [JDK 9](https://docs.oracle.com/javase/9/docs/api/overview-summary.html)
   * JShell [JEP 222](https://openjdk.java.net/jeps/222)
-  * Immutable Collection Creation
+  * Immutable/Convenience Factory Methods for Collections [JEP 269](https://openjdk.java.net/jeps/269)
   * Module System [JEP 261](https://openjdk.java.net/jeps/261)
   * JLink [JEP 282](https://openjdk.java.net/jeps/282)
   * Process Handles
   * Flow API [JEP 266](https://openjdk.java.net/jeps/266)
   * Functional and Stream Additions
-  * HTTP2 Client
+  * HTTP2 Client (Preview) [JEP 110](https://openjdk.java.net/jeps/110)
   * Var Handles [JEP 193](https://openjdk.java.net/jeps/193)
   * `IntStream CharSequence.chars()`
   * `Objects.checkIndex()`
-* JDK 10
-  * Type inference
-  * `Collectors.toUnmodifiableList`, `Collectors.toUnmodifiableMap`, `Collectors.toUnmodifiableSet`
+* [JDK 10](https://docs.oracle.com/javase/10/docs/api/overview-summary.html)
+  * Local-Variable Type Inference [JEP 286](https://openjdk.java.net/jeps/286)
   * `copyOf` in `List`, `Map`, and `Set`
-* JDK 11
+* [JDK 11](https://docs.oracle.com/en/java/javase/11/docs/api/index.html)
   * String class additions:
      * `lines()` 
      * `isBlank()` 
@@ -37,43 +37,43 @@
      * `stripLeading()`
      * `stripTrailing()`
   * `Predicate.not(Predicate)`
-  * Type inference lambda-variables
-  * HTTPClient API
+  * HTTPClient API [JEP 321](https://openjdk.java.net/jeps/321)
   * `Files.readString()` and `Files.writeString()`
   * `Optional.isEmpty()`
   * `Collection.toArray(IntFunction)`
   * Null-Based Input, Output Stream and Readers
-* JDK 12
+  * Local-Variable Syntax for Lambda Parameters [JEP 323](https://openjdk.org/jeps/323)
+* [JDK 12](https://docs.oracle.com/en/java/javase/12/docs/api/)
   * `switch` expressions (Preview)
   * `teeing` collector
   * `Files.mismatch(Path, Path)`
   * Microbenchmark Suite [JEP 230](https://openjdk.java.net/jeps/230)
-* JDK 13
+* [JDK 13](https://docs.oracle.com/en/java/javase/13/docs/api/)
   * Text Blocks (First Preview) [JEP 368](https://openjdk.java.net/jeps/368)
   * Reimplemented Socket API [JEP 353](https://openjdk.java.net/jeps/353)
   * `FileSystems.newFileSystem()` Method
   * `switch` expressions (Second Preview) [JEP 254](https://openjdk.java.net/jeps/354)
-* JDK 14
+* [JDK 14](https://docs.oracle.com/en/java/javase/14/docs/api/)
    * Records (Preview) [JEP 359](https://openjdk.java.net/jeps/359)
    * Text Blocks (Second Preview) [JEP 368](https://openjdk.java.net/jeps/368)
    * Pattern Matching for `instanceof` (Preview) [JEP 305](https://openjdk.java.net/jeps/305)
    * `switch` expressions (Final) [JEP 361](https://openjdk.java.net/jeps/361)
    * Reimplemented DataSocket API [JEP 353](https://openjdk.java.net/jeps/353)
-   * `-XX:+ShowCodeDetailsInExceptionMessages`
-* JDK 15
+   * Helpful NullPointerExceptions [JEP 358](https://openjdk.java.net/jeps/358)
+* [JDK 15](https://docs.oracle.com/en/java/javase/15/docs/api/)
    * Sealed Classes (First Preview) [JEP 360](https://openjdk.java.net/jeps/360)
    * Records (Second Preview) [JEP 384](https://openjdk.java.net/jeps/384)
    * Enhanced Pattern Matching [JEP 375](https://openjdk.java.net/jeps/375)
    * Text Blocks (Preview) [JEP 378](https://openjdk.java.net/jeps/378)
    * Hidden Classes [JEP 371](https://openjdk.java.net/jeps/371)
-* JDK 16
+* [JDK 16](https://docs.oracle.com/en/java/javase/16/docs/api/)
    * `Stream.toList`, `Stream.toArray`
    * Vector API (First Incubator) [JEP 338](https://openjdk.java.net/jeps/338)
    * Records (Final) [JEP 395](https://openjdk.java.net/jeps/395)
    * Sealed Classes (Second Preview) [JEP 397](https://openjdk.java.net/jeps/397)
    * Packaging Tool [JEP 392](https://openjdk.java.net/jeps/392)
    * Foreign-Memory Access API (Third Incubator) [JEP 393](https://openjdk.java.net/jeps/393)
-* JDK 17
+* [JDK 17](https://docs.oracle.com/en/java/javase/17/docs/api/)
    * Pattern Matching for Switch (Preview) [JEP 406](https://openjdk.java.net/jeps/409)
    * Sealed Classes [JEP 409](https://openjdk.java.net/jeps/409)
    * Enhanced Pseudo-Random Number Generators [JEP 356](https://openjdk.java.net/jeps/356)
@@ -81,7 +81,7 @@
    * Foreign Function & Memory API (First Incubator) [JEP 412](https://openjdk.java.net/jeps/412)
    * `java.util.HexFormat`
    * `Process.inputReader()`, `Process.outputWriter()`, `Process.errorReader()`
-* JDK 18
+* [JDK 18](https://docs.oracle.com/en/java/javase/18/docs/api/)
    * Pattern Matching for Switch (Second Preview) [JEP 420](https://openjdk.java.net/jeps/420)
    * Simple Web Server [JEP 408](https://openjdk.java.net/jeps/408)
    * Code Snippets in Java API Documentation [JEP 413](https://openjdk.java.net/jeps/413)
@@ -90,19 +90,20 @@
    * `Math.ceilDiv`, `Math.ceilDivExact`, `Math.ceilMod`, `Math.divideExact`, `Math.floorDivExact`, `Math.unsignedMultiplyHigh` 
    * `StrictMath.ceilDiv`, `StrictMath.ceilDivExact`, `StrictMath.ceilMod`, `StrictMath.divideExact`, `StrictMath.floorDivExact`, `StrictMath.unsignedMultiplyHigh`
    * `FileInputStream.transferTo(OutputStream)`
-* JDK 19 
+* [JDK 19](https://docs.oracle.com/en/java/javase/19/docs/api/)
    * Project Loom Virtual Threads (First Preview) [JEP 425](https://openjdk.java.net/jeps/425)
    * Pattern Matching for Switch (Third Preview) [JEP 427](https://openjdk.java.net/jeps/427)
    * Foreign Function & Memory API (First Preview) [JEP 424](https://openjdk.java.net/jeps/424)
    * Vector API (Fourth Incubator) [JEP 426](https://openjdk.java.net/jeps/426)
    * Project Loom Structured Concurrency (First Incubator) [JEP 428](https://openjdk.java.net/jeps/428)
    * `CompletableFuture.exceptionNow()`, `CompletableFuture.resultNow()`, `CompletableFuture.state()`
-* JDK 20
+* [JDK 20](https://download.java.net/java/early_access/jdk20/docs/api/)
    * Pattern Matching for Switch (Forth Preview) [JEP 433](https://openjdk.java.net/jeps/433)
    * Record Patterns (Second Preview)  [JEP 432](https://openjdk.java.net/jeps/432)
    * Project Loom Virtual Threads (Second Preview) [JEP 436](https://openjdk.java.net/jeps/436)
    * Foreign Function & Memory API (Second Preview) [JEP 434](https://openjdk.java.net/jeps/434)
    * Project Loom Structured Concurrency (Second Incubator) [JEP 437](https://openjdk.java.net/jeps/437)
-* To Be Announced
+* To Be Announced (Possibly)
    * String Templates (First Preview) [JEP 430](https://openjdk.java.net/jeps/430)
+   * Implicit Classes and Enhanced Main Methods [JEP Draft](https://openjdk.org/jeps/8302326)
 
