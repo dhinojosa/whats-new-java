@@ -64,7 +64,7 @@
    * Sealed Classes (First Preview) [JEP 360](https://openjdk.java.net/jeps/360)
    * Records (Second Preview) [JEP 384](https://openjdk.java.net/jeps/384)
    * Enhanced Pattern Matching [JEP 375](https://openjdk.java.net/jeps/375)
-   * Text Blocks (Preview) [JEP 378](https://openjdk.java.net/jeps/378)
+   * Text Blocks [JEP 378](https://openjdk.java.net/jeps/378)
    * Hidden Classes [JEP 371](https://openjdk.java.net/jeps/371)
 * [JDK 16](https://docs.oracle.com/en/java/javase/16/docs/api/)
    * `Stream.toList`, `Stream.toArray`
