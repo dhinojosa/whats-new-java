@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -16,7 +17,11 @@ public class StringAdditionsTest {
     @Test
     void testChars() {
         IntStream chars = "Hello, is it me you're looking for?".chars();
-
+        OptionalInt maxChar = chars.max();
+        if (maxChar.isPresent()) {
+            System.out.println(maxChar.getAsInt());
+            System.out.println((char)(maxChar.getAsInt()));
+        }
     }
 
     /**
