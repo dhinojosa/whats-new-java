@@ -15,6 +15,35 @@ public class MyPublisherFlowTest {
 
 
         MyPublisherFlow myPublisherFlow = new MyPublisherFlow(executorService);
+
+        myPublisherFlow.subscribe(new Flow.Subscriber<Long>() {
+            private Flow.Subscription subscription;
+
+            @Override
+            public void onSubscribe(Flow.Subscription subscription) {
+                this.subscription = subscription;
+                this.subscription.request(10);
+            }
+
+            @Override
+            public void onNext(Long item) {
+                System.out.println("S0: " + item);
+                if (item == 9) this.subscription.request(10);
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                System.err.println("S0: " + throwable.getMessage());
+            }
+
+            @Override
+            public void onComplete() {
+                System.out.println("S0: Done");
+            }
+        });
+
+
+
         myPublisherFlow.subscribe(new Flow.Subscriber<>() {
             private Flow.Subscription subscription;
 

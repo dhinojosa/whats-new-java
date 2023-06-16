@@ -1,6 +1,19 @@
 package com.xyzcorp.patternmatching;
 
 public class PatternMatching {
+
+    public static String matchOldWay(Object o) {
+        if (o instanceof String) {
+            String s = (String) o;
+            if ("Hello".equals(s)) return "Hello to you";
+            else return "A String";
+        } else if (o instanceof Integer) {
+            Integer i = (Integer) o;
+            return String.valueOf(i + 30);
+        }
+        return "Nothing";
+    }
+
     public static String match(Object o) {
        if (o instanceof String s) {
            if ("Hello".equals(s)) return "Hello to you";
@@ -17,5 +30,13 @@ public class PatternMatching {
             return "non empty string";
         }
         return "not a string or is empty";
+    }
+
+    public static void matchString(String s) {
+        switch (s) {
+            case null         -> System.out.println("Oops");
+            case "Foo", "Bar" -> System.out.println("Great");
+            default           -> System.out.println("Ok");
+        }
     }
 }

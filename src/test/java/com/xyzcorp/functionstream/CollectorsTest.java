@@ -30,6 +30,14 @@ public class CollectorsTest {
         assertThat(evenSet).isEqualTo(Set.of(2,4));
     }
 
+    void testToSet() {
+        List<Integer> evenSet =
+            List.of(1, 2, 3, 4).stream()
+                .filter(i -> i % 2 == 0)
+                .toList();
+        assertThat(evenSet).isEqualTo(Set.of(2,4));
+    }
+
     @Test
     void testToUnmodifiableMap() {
         Map<Integer, Double> map =

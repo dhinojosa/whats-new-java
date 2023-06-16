@@ -13,7 +13,7 @@ public class CountryFunctions {
             map.values()
                .stream()
                .filter(c -> c.getLanguages().contains(language))
-               .filter(c -> c.getRegion().equals(region))
+               .filter(c -> region.equals(c.getRegion()))
                .map(Country::getName)
                .sorted()
                .collect(Collectors.joining(", "));

@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,6 +40,14 @@ public class TypeInferenceTest {
         }
     }
 
+    @Test
+    void testWhyWeMayNeedTypeInference() {
+        var lists = List.of(List.of(List.of(1, 2, 3),
+            List.of(4, 5,
+                6), List.of(30, 10, 50, 102)));
+        System.out.println(lists);
+    }
+
     @SuppressWarnings("unused")
     @Test
     void testPolymorphismWithVar() {
@@ -50,13 +59,50 @@ public class TypeInferenceTest {
     // public void add2(var a, var b) {
     //   a + b
     // }
-
+    public String times(int n, String s) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            sb.append(s);
+            return sb.toString();
+        }
+        return sb.toString();
+    }
     // You cannot assign to null either
     // var x = null;
 
     // This will not work either
     //  var x = () -> {}
 
+
+    @Test
+    void testUsingPostfix() {
+        String hello = times(10, "Hello");
+    }
+
+
+    @Test
+    void testLifeWithoutNonDenotableTypes() {
+
+        record MyHolder(int value) {
+            public int next() {
+                return value + 1;
+            }
+
+            public int previous() {
+                return value - 1;
+            }
+
+            public int negative() {
+                return -value;
+            }
+        }
+
+        var myHolderStream =
+            Stream.of(1, 2, 3, 4, 5)
+                  .map(MyHolder::new)
+                  .map(MyHolder::negative)
+                  .toList();
+    }
 
     /**
      * In the following, what is the type?

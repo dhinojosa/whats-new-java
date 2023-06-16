@@ -15,4 +15,11 @@ public class PatternMatchingTest {
     void testCompoundMatch() {
         assertThat(PatternMatching.compoundMatch("Hello")).isEqualTo("non empty string");
     }
+
+    @Test
+    void testStringMatch() {
+        PatternMatching.matchString("Foo");
+        PatternMatching.matchString("Bar");
+        PatternMatching.matchString(null);
+    }
 }

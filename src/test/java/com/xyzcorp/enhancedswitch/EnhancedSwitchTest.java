@@ -17,7 +17,7 @@ public class EnhancedSwitchTest {
     @Test
     void testBasicSwitch() {
         int result = 0;
-        switch (birthMonth) {
+        switch (birthMonth) { //switch statement
             case JANUARY:
             case MARCH:
             case MAY:
@@ -41,7 +41,7 @@ public class EnhancedSwitchTest {
 
     @Test
     void testEnhancedSwitchWithYield() {
-        var result = switch (birthMonth) {
+        final var result = switch (birthMonth) {  //expression
             case JANUARY, MARCH, MAY, JULY, AUGUST, OCTOBER, DECEMBER:
                 yield 31;
             case APRIL, JUNE, SEPTEMBER, NOVEMBER:

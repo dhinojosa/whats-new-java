@@ -9,6 +9,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class ObjectsTest {
 
     @Test
+    void testObjectsNonNull() {
+        String s = null;
+        Objects.requireNonNull(s, "This string should not be null");
+    }
+
+    @Test
     void testObjectsCheckIndex() {
         assertThatThrownBy(() -> Objects.checkIndex(122, 10)).isInstanceOf(IndexOutOfBoundsException.class);
     }

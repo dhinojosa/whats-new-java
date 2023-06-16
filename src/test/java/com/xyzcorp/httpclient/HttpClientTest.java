@@ -10,6 +10,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
+import java.util.function.BiFunction;
 
 public class HttpClientTest {
     String urlString = "https://gist.githubusercontent.com/dhinojosa/877425fb98a939a816e2c56f02bbedd0/raw/84158bf19d58dca011cecf267eae0307232b76f3/countries.json";
@@ -68,12 +69,19 @@ public class HttpClientTest {
                 HttpResponse.BodyHandlers.ofString());
 
         CompletableFuture<String> stringCompletableFuture = future
-            .thenApply(HttpResponse::body)
-            .thenApply(JSONDeserializer::processJson)
+            .thenApply(stringHttpResponse -> stringHttpResponse.body())
+            .thenApply(json -> JSONDeserializer.processJson(json))
             .thenApplyAsync(m -> CountryFunctions.findLanguagesByRegion(m, "en", "Americas"));
 
         stringCompletableFuture
             .orTimeout(15, TimeUnit.SECONDS)
+            .handle((s, throwable) -> {
+                if (s != null) return s;
+                else {
+                    throwable.printStackTrace();
+                    return "Unknown";
+                }
+            })
             .thenAccept(System.out::println);
 
         Thread.sleep(15000);

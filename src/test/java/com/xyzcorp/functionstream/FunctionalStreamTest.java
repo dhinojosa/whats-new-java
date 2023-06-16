@@ -21,6 +21,17 @@ public class FunctionalStreamTest {
     }
 
     @Test
+    void testOptionalChaining() {
+        Optional<Integer> o1 = Optional.of(3);
+        Optional<Integer> o2 = Optional.empty();
+        Optional<Integer> o3 = Optional.of(6);
+
+        var result =
+            o1.flatMap(x -> o2.flatMap(y -> o3.map(z -> x + y + z)));
+        System.out.println(result);
+    }
+
+    @Test
     void testOptionalsWithPossibleException() {
         System.out.println(
             Stream.of(1, 50, 0, 20, 10)
@@ -38,7 +49,8 @@ public class FunctionalStreamTest {
     void testOptionalStream() {
         Stream<Optional<Integer>> os =
             Stream.of(Optional.of(2), Optional.empty(), Optional.of(30));
-        Stream<Integer> integerStream = os.flatMap(Optional::stream);
+        Stream<Integer> integerStream = os
+            .flatMap(Optional::stream);
         System.out.println(integerStream.collect(Collectors.toList()));
     }
 
