@@ -107,6 +107,6 @@ public class StringAdditionsTest {
             .distinct()
             .collect(Collectors.groupingBy(s -> String.valueOf(s.charAt(0))));
 
-        assertThat(collect.get("w")).contains("we'll", "will", "what");
+        assertThat(collect.get("w")).contains("we'll", "will", "what", "with");
     }
 }

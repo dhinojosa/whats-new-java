@@ -8,12 +8,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PatternMatchingTest {
     @Test
     void testEnsureThatMatchWorks() {
-        assertThat(PatternMatching.match("Hello")).isEqualTo("Hello to you");
+
+        String result = PatternMatching.match("Hello");
+        assertThat(result).isEqualTo("Hello to you");
     }
 
     @Test
     void testCompoundMatch() {
-        assertThat(PatternMatching.compoundMatch("Hello")).isEqualTo("non empty string");
+        String result = PatternMatching.compoundMatch("Hello");
+        assertThat(result).isEqualTo("non empty string");
     }
 
     @Test

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -48,5 +49,12 @@ public class CollectorsTest {
                          i -> Math.pow(i, 3))
                      );
         System.out.println(map);
+    }
+
+    @Test
+    void testToList() {
+        List<Integer> list =
+            Stream.of(1, 2, 3, 4).map(x -> x * 4).toList();
+        assertThat(list).contains(4, 8);
     }
 }

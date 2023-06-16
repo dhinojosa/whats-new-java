@@ -21,28 +21,49 @@ public class FunctionalStreamTest {
     }
 
     @Test
-    void testOptionalChaining() {
+    void testOptionalChainingMonadically() {
+        //C<A>
+
+
+        //1. Shape C<A>
+        //   e.g. Future<A>
+        //   e.g. Optional<A>
+        //   e.g. List<A>
+        //   e.g. Observable<A>
+        //   e.g. Flux<A>
+        //2. C<A> must have flatMap, map, filter
+        //3. C<A> should have good side, and evil side
+
         Optional<Integer> o1 = Optional.of(3);
         Optional<Integer> o2 = Optional.empty();
         Optional<Integer> o3 = Optional.of(6);
 
         var result =
-            o1.flatMap(x -> o2.flatMap(y -> o3.map(z -> x + y + z)));
+            o1.flatMap(x ->
+                o2.flatMap(y ->
+                    o3.map(z -> x + y + z)));
         System.out.println(result);
+    }
+
+    @Test
+    void testTheThingAboutFlatMap() {
+        Stream<Integer> stream =
+            Stream.of(1, 2, 3, 4).flatMap(x -> Stream.of(x, x + 1, x + 2));
+        System.out.println(stream.toList());
     }
 
     @Test
     void testOptionalsWithPossibleException() {
         System.out.println(
             Stream.of(1, 50, 0, 20, 10)
-                  .flatMap(i -> {
-                      try {
-                          return Stream.of(100 / i);
-                      } catch (ArithmeticException ae) {
-                          return Stream.empty();
-                      }
-                  })
-                  .collect(Collectors.toList()));
+                .flatMap(i -> {
+                    try {
+                        return Stream.of(100 / i);
+                    } catch (ArithmeticException ae) {
+                        return Stream.empty();
+                    }
+                })
+                .collect(Collectors.toList()));
     }
 
     @Test
@@ -50,8 +71,9 @@ public class FunctionalStreamTest {
         Stream<Optional<Integer>> os =
             Stream.of(Optional.of(2), Optional.empty(), Optional.of(30));
         Stream<Integer> integerStream = os
-            .flatMap(Optional::stream);
-        System.out.println(integerStream.collect(Collectors.toList()));
+            .flatMap(integer -> integer.stream());
+        List<Integer> result = integerStream.collect(Collectors.toList());
+        assertThat(result).contains(2, 0);
     }
 
     @SuppressWarnings("SimplifyStreamApiCallChains")
@@ -78,10 +100,10 @@ public class FunctionalStreamTest {
     void testDropWhile() {
         List<Integer> result =
             Stream.iterate(0, integer -> integer + 1)
-                  .dropWhile(i -> i < 5)
-                  .filter(i -> i % 2 == 0)
-                  .takeWhile(i -> i < 50)
-                  .collect(Collectors.toList());
+                .dropWhile(i -> i < 5)
+                .filter(i -> i % 2 == 0)
+                .takeWhile(i -> i < 50)
+                .collect(Collectors.toList());
         System.out.println(result);
     }
 
@@ -95,10 +117,10 @@ public class FunctionalStreamTest {
     void testTeeing() {
         Double result =
             Stream.of(100, 100, 90, 50, 40, 80, 90, 100)
-                  .collect(Collectors.teeing(
-                      Collectors.summingDouble(value -> value),
-                      Collectors.counting(),
-                      (sum, count) -> sum / count));
+                .collect(Collectors.teeing(
+                    Collectors.summingDouble(value -> value),
+                    Collectors.counting(),
+                    (sum, count) -> sum / count));
         System.out.println(result);
     }
 
@@ -126,10 +148,11 @@ public class FunctionalStreamTest {
     @SuppressWarnings("ConstantConditions")
     @Test
     void testOrElseThrow() {
+        //assertJ
         assertThatThrownBy(() -> Stream.of(1, 2, 3, 4)
-                                       .filter(i -> i > 10)
-                                       .findFirst()
-                                       .orElseThrow(() -> new RuntimeException("No number higher than 10")))
+            .filter(i -> i > 10)
+            .findFirst()
+            .orElseThrow(() -> new RuntimeException("No number higher than 10")))
             .isInstanceOf(RuntimeException.class);
     }
 }

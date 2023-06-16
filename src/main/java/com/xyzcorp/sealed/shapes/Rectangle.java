@@ -1,6 +1,6 @@
 package com.xyzcorp.sealed.shapes;
 
-public final class Rectangle extends Shape {
+public non-sealed class Rectangle extends Shape {
     private final int length;
     private final int height;
 

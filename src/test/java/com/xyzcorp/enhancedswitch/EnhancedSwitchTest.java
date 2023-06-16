@@ -54,7 +54,7 @@ public class EnhancedSwitchTest {
 
     @Test
     void testEnhancedSwitch() {
-        var result = switch (birthMonth) {
+        final var result = switch (birthMonth) {
             case JANUARY, MARCH, MAY, JULY, AUGUST, OCTOBER, DECEMBER -> 31;
             case APRIL, JUNE, SEPTEMBER, NOVEMBER -> 30;
             default -> 29;
@@ -64,7 +64,6 @@ public class EnhancedSwitchTest {
 
     @Test
     void testPerformingActionWithinACase() {
-        int year = LocalDate.now().getYear();
         var result = switch (birthMonth) {
             case JANUARY, MARCH, MAY, JULY, AUGUST, OCTOBER, DECEMBER:
                 System.out.println("Did something first");
