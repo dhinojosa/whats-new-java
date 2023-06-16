@@ -1,10 +1,14 @@
 # What's new in Java 2023
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/github.com/dhinojosa/whats-new-java)
+
 
 ## Outline
 
+NOTE: JEPS only includes software features
+
 * Introduction
   * Name
-  * What you do?
+  * What do you do?
   * What is your experience with Java?
   * What IDE do you usually use?
   * How would grade (Novice, Intermediate, Advanced) 
@@ -49,7 +53,7 @@
   * `Files.mismatch(Path, Path)`
   * Microbenchmark Suite [JEP 230](https://openjdk.java.net/jeps/230)
 * [JDK 13](https://docs.oracle.com/en/java/javase/13/docs/api/)
-  * Text Blocks (First Preview) [JEP 368](https://openjdk.java.net/jeps/368)
+  * Text Blocks (First Preview) [JEP 355](https://openjdk.java.net/jeps/355)
   * Reimplemented Socket API [JEP 353](https://openjdk.java.net/jeps/353)
   * `FileSystems.newFileSystem()` Method
   * `switch` expressions (Second Preview) [JEP 254](https://openjdk.java.net/jeps/354)
@@ -64,7 +68,7 @@
    * Sealed Classes (First Preview) [JEP 360](https://openjdk.java.net/jeps/360)
    * Records (Second Preview) [JEP 384](https://openjdk.java.net/jeps/384)
    * Enhanced Pattern Matching [JEP 375](https://openjdk.java.net/jeps/375)
-   * Text Blocks (Preview) [JEP 378](https://openjdk.java.net/jeps/378)
+   * Text Blocks [JEP 378](https://openjdk.java.net/jeps/378)
    * Hidden Classes [JEP 371](https://openjdk.java.net/jeps/371)
 * [JDK 16](https://docs.oracle.com/en/java/javase/16/docs/api/)
    * `Stream.toList`, `Stream.toArray`
@@ -97,13 +101,24 @@
    * Vector API (Fourth Incubator) [JEP 426](https://openjdk.java.net/jeps/426)
    * Project Loom Structured Concurrency (First Incubator) [JEP 428](https://openjdk.java.net/jeps/428)
    * `CompletableFuture.exceptionNow()`, `CompletableFuture.resultNow()`, `CompletableFuture.state()`
-* [JDK 20](https://download.java.net/java/early_access/jdk20/docs/api/)
-   * Pattern Matching for Switch (Forth Preview) [JEP 433](https://openjdk.java.net/jeps/433)
+* [JDK 20](https://docs.oracle.com/en/java/javase/20/docs/api/)
+   * Pattern Matching for `switch` (Forth Preview) [JEP 433](https://openjdk.java.net/jeps/433)
    * Record Patterns (Second Preview)  [JEP 432](https://openjdk.java.net/jeps/432)
    * Project Loom Virtual Threads (Second Preview) [JEP 436](https://openjdk.java.net/jeps/436)
    * Foreign Function & Memory API (Second Preview) [JEP 434](https://openjdk.java.net/jeps/434)
    * Project Loom Structured Concurrency (Second Incubator) [JEP 437](https://openjdk.java.net/jeps/437)
-* To Be Announced (Possibly)
+* [JDK 21](https://download.java.net/java/early_access/jdk21/docs/api/)
+   * Record Patterns [JEP 440](https://openjdk.org/jeps/440)
+   * Pattern Matching for `switch` [JEP 441](https://openjdk.org/jeps/441)
+   * Foreign Function & Memory API (Third Preview) [JEP 442](https://openjdk.org/jeps/442)
+   * Unnamed Patterns and Variables (Preview) [JEP 443](https://openjdk.org/jeps/443)
+   * Virtual Threads [JEP 444](https://openjdk.org/jeps/444)
+   * Unnamed Classes and Instance Main Methods (Preview) [JEP 445](https://openjdk.org/jeps/445)
+   * Scoped Values (Preview) [JEP 446](https://openjdk.org/jeps/446)
+   * Statements before `super()` (Preview) [JEP 447](https://openjdk.org/jeps/447)
+   * Vector API (Sixth Incubator) [JEP 448](https://openjdk.org/jeps/448)
+   * Structured Concurrency (Preview) [JEP 453](https://openjdk.org/jeps/453)
+*  To Be Announced (Possibly)
    * String Templates (First Preview) [JEP 430](https://openjdk.java.net/jeps/430)
    * Implicit Classes and Enhanced Main Methods [JEP Draft](https://openjdk.org/jeps/8302326)
 
