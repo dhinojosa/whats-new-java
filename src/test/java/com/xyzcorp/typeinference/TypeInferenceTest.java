@@ -63,7 +63,6 @@ public class TypeInferenceTest {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; i++) {
             sb.append(s);
-            return sb.toString();
         }
         return sb.toString();
     }
@@ -73,11 +72,6 @@ public class TypeInferenceTest {
     // This will not work either
     //  var x = () -> {}
 
-
-    @Test
-    void testUsingPostfix() {
-        String hello = times(10, "Hello");
-    }
 
 
     @Test

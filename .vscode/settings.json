@@ -1,0 +1,9 @@
+{
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.configuration.runtimes": [
+        {
+             "name": "JavaSE-20",
+             "path": "~/.sdkman/candidates/java/20-tem/"
+        }
+    ]
+}

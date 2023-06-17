@@ -17,9 +17,8 @@ public class ImmutableCollectionsTest {
         stringList.add("b");
         stringList.add("c");
         List<String> newReferenceToStringList = Collections.unmodifiableList(stringList);
-        System.out.println(newReferenceToStringList);
         stringList.add("d"); //Can I sneak this in
-        System.out.println(newReferenceToStringList);
+        assertThat(newReferenceToStringList).containsExactly("a", "b", "c", "d");
     }
 
     @Test
@@ -52,7 +51,7 @@ public class ImmutableCollectionsTest {
     @Test
     void testNewImmutableMap() {
         Map<Integer, String> map = Map.of(1, "One", 2, "Two", 3, "Three");
-        //map.put(4, "Four"); No it is immutable
+        assertThatThrownBy(() -> map.put(4, "Four")).isInstanceOf(java.lang.UnsupportedOperationException.class);
     }
 
     @Test

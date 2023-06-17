@@ -1,13 +1,11 @@
 package com.xyzcorp.enhancedswitch;
 
-import org.junit.jupiter.api.Test;
+import static java.time.Month.JANUARY;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import java.time.LocalDate;
 import java.time.Month;
 
-import static java.time.Month.*;
-import static java.time.temporal.ChronoUnit.YEARS;
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
 
 public class EnhancedSwitchTest {
 

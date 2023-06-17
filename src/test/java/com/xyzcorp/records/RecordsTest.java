@@ -32,9 +32,6 @@ public class RecordsTest {
     @Test
     void testExtendingByComposition() {
         record Teamz(String name, String city){
-            Teamz(String name) {
-                this(name, "Unknown");
-            }
         }
         record BaseballTeam(Teamz teamz, String startingPitcher) {
             public static BaseballTeam of (String name, String city, String startingPitcher) {
