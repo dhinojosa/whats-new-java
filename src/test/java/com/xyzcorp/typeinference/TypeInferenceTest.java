@@ -59,13 +59,17 @@ public class TypeInferenceTest {
     // public void add2(var a, var b) {
     //   a + b
     // }
+
+    /* loops can have a var */
+    @SuppressWarnings({"StringRepeatCanBeUsed", "unused"})
     public String times(int n, String s) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n; i++) {
+        for (var i = 0; i < n; i++) {
             sb.append(s);
         }
         return sb.toString();
     }
+
     // You cannot assign to null either
     // var x = null;
 
@@ -73,16 +77,15 @@ public class TypeInferenceTest {
     //  var x = () -> {}
 
 
-
     @Test
     void testLifeWithoutNonDenotableTypes() {
 
         record MyHolder(int value) {
-            public int next() {
+            public int after() {
                 return value + 1;
             }
 
-            public int previous() {
+            public int before() {
                 return value - 1;
             }
 
@@ -91,11 +94,15 @@ public class TypeInferenceTest {
             }
         }
 
-        var myHolderStream =
-            Stream.of(1, 2, 3, 4, 5)
-                  .map(MyHolder::new)
-                  .map(MyHolder::negative)
-                  .toList();
+
+        var result = Stream.of(1, 2, 3, 4, 5)
+            .map(MyHolder::new);
+
+
+        result.forEach(o ->
+            System.out.printf("Before: %d, After: %d, Negative: %d\n",
+                o.before(), o.after(), o.negative()));
+
     }
 
     /**
@@ -116,6 +123,10 @@ public class TypeInferenceTest {
         System.out.println(a.age);
     }
 
+    /**
+     * Couple of examples ago, we used a record, here we use a non-denotable
+     * type to avoid the overhead of creating an additional object.
+     */
     @SuppressWarnings("SimplifyStreamApiCallChains")
     @Test
     void usingANonDenotableTypeToPassInAction() {
