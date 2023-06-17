@@ -1,10 +1,13 @@
 package com.xyzcorp.immutable;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
+
 import static java.util.Map.entry;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ImmutableCollectionsTest {
     @Test
@@ -28,15 +31,22 @@ public class ImmutableCollectionsTest {
         stringList = Collections.unmodifiableList(stringList); //changed reference
     }
 
+    @SuppressWarnings("DataFlowIssue")
     @Test
     void testNewImmutableList() {
         List<String> list = List.of("a", "b", "c");
-        list.add("d");
+        assertThatThrownBy(() -> list.add("d"))
+            .isInstanceOf(UnsupportedOperationException.class);
     }
 
     @Test
+    @DisplayName("Immutable Set is still a set and should not expect anything different")
     void testNewImmutableSet() {
         Set<String> set = Set.of("a", "b", "c");
+        assertThat(set)
+            .as("Set should contain the same elements")
+            .contains("a", "b", "c")
+            .isInstanceOf(Set.class);
     }
 
     @Test

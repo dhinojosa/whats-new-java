@@ -42,7 +42,7 @@ public class RecordsTest {
             }
         }
 
-        var baseballTeam = BaseballTeam.of("Baltimore", "Orioles", "Bob Awesome");
-        Assertions.assertThat(baseballTeam.teamz().city()).isEqualTo("Seattle");
+        var baseballTeam = BaseballTeam.of("Orioles", "Baltimore", "Bob Awesome");
+        Assertions.assertThat(baseballTeam.teamz().city()).isEqualTo("Baltimore");
     }
 }

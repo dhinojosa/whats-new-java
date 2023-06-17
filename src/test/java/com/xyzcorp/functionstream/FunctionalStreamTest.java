@@ -1,5 +1,6 @@
 package com.xyzcorp.functionstream;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -67,13 +68,14 @@ public class FunctionalStreamTest {
     }
 
     @Test
+    @DisplayName("Any Stream.empty in a Stream<Stream<A>> should be squashed")
     void testOptionalStream() {
         Stream<Optional<Integer>> os =
             Stream.of(Optional.of(2), Optional.empty(), Optional.of(30));
         Stream<Integer> integerStream = os
-            .flatMap(integer -> integer.stream());
+            .flatMap(Optional::stream);
         List<Integer> result = integerStream.collect(Collectors.toList());
-        assertThat(result).contains(2, 0);
+        assertThat(result).contains(2, 30);
     }
 
     @SuppressWarnings("SimplifyStreamApiCallChains")

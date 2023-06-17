@@ -4,14 +4,17 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
 
+import static java.util.Objects.requireNonNull;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ObjectsTest {
 
+    @SuppressWarnings("DataFlowIssue")
     @Test
     void testObjectsNonNull() {
         String s = null;
-        Objects.requireNonNull(s, "This string should not be null");
+        assertThatThrownBy(() -> requireNonNull(s, "This string should not be null"))
+            .isInstanceOf(NullPointerException.class);
     }
 
     @Test
