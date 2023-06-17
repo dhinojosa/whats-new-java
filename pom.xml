@@ -92,7 +92,6 @@
                             <include>**/*Test.java</include>
                         </includes>
                         <argLine>--enable-preview</argLine>
-                        <!--                    <argLine>-Xlint:preview</argLine>-->
                     </configuration>
                 </plugin>
                 <plugin>
@@ -103,7 +102,6 @@
                         <source>20</source>
                         <target>20</target>
                         <compilerArgs>--enable-preview</compilerArgs>
-                        <!--                    <compilerArgs>-Xlint:preview</compilerArgs>-->
                     </configuration>
                 </plugin>
                 <plugin>
