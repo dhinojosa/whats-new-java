@@ -1,6 +1,5 @@
 package com.xyzcorp.records;
 
-import com.xyzcorp.patternmatching.Team;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
