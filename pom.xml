@@ -91,7 +91,6 @@
                             <include>**/*Property.java</include>
                             <include>**/*Test.java</include>
                         </includes>
-                        <argLine>--enable-preview</argLine>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -101,7 +100,6 @@
                     <configuration>
                         <source>20</source>
                         <target>20</target>
-                        <compilerArgs>--enable-preview</compilerArgs>
                     </configuration>
                 </plugin>
                 <plugin>
