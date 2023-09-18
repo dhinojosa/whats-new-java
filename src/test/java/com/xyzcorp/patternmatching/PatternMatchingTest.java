@@ -19,10 +19,11 @@ public class PatternMatchingTest {
         assertThat(result).isEqualTo("non empty string");
     }
 
-    @Test
-    void testStringMatch() {
-        PatternMatching.matchString("Foo");
-        PatternMatching.matchString("Bar");
-        PatternMatching.matchString(null);
-    }
+    // Preview
+    // @Test
+    // void testStringMatch() {
+    //     PatternMatching.matchString("Foo");
+    //     PatternMatching.matchString("Bar");
+    //     PatternMatching.matchString(null);
+    // }
 }

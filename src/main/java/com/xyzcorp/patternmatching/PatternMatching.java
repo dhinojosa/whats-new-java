@@ -32,21 +32,22 @@ public class PatternMatching {
         return "not a string or is empty";
     }
 
-    public static void matchString(String s) {
-        switch (s) {
-            case null         -> System.out.println("Oops");
-            case "Foo", "Bar" -> System.out.println("Great");
-            default           -> System.out.println("Ok");
-        }
-    }
-
-    static String formatterPatternSwitch(Object obj) {
-        return switch (obj) {
-            case Integer i -> String.format("int %d", i);
-            case Long l    -> String.format("long %d", l);
-            case Double d  -> String.format("double %f", d);
-            case String s  -> String.format("String %s", s);
-            default        -> obj.toString();
-        };
-    }
+    // Preview
+    // public static void matchString(String s) {
+    //     switch (s) {
+    //         case null         -> System.out.println("Oops");
+    //         case "Foo", "Bar" -> System.out.println("Great");
+    //         default           -> System.out.println("Ok");
+    //     }
+    // }
+    
+    // Preview
+    // static String formatterPatternSwitch(Object obj) {
+    //     return switch (obj) {
+    //         case Integer i -> String.format("int %d", i);
+    //         case Long l    -> String.format("long %d", l);
+    //         case Double d  -> String.format("double %f", d);
+    //         case String s  -> String.format("String %s", s);
+    //         default        -> obj.toString();
+    // }
 }
