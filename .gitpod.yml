@@ -5,7 +5,7 @@
 
 tasks:
   - name: Setup & Build
-    before: sdk install java 20-tem < /dev/null
+    before: sdk install java 21.ea.35-open < /dev/null
     init: mvn install -DskipTests=true
 vscode:
   extensions:

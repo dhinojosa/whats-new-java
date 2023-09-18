@@ -27,7 +27,8 @@ public class MyPublisherFlowTest {
 
             @Override
             public void onNext(Long item) {
-                System.out.println("S0: " + item);
+                System.out.println("S0: (" +
+                    Thread.currentThread().getName() + ")" + item);
                 if (item == 9) this.subscription.request(10);
             }
 
