@@ -17,7 +17,6 @@ public class CountryFunctions {
                .map(Country::getName)
                .sorted()
                .collect(Collectors.joining(", "));
-        System.out.println("This never completes");
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(language);
         stringBuilder.append(" countries in ");

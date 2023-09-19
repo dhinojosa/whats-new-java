@@ -1,8 +1,6 @@
 package com.xyzcorp.scopedvalues;
 
 
-import org.jetbrains.annotations.NotNull;
-
 import java.time.format.DateTimeFormatter;
 
 public class Server {
@@ -15,7 +13,6 @@ public class Server {
         System.out.println(a);
     }
 
-    @NotNull
     public static String processDate() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM dd");
         System.out.println(Thread.currentThread());

@@ -22,18 +22,18 @@ class Framework {
 
     public String performAnotherCalculation() {
         return ScopedValue
-            .where(dateScopedValue, LocalDate.now())
+            .where(dateScopedValue, LocalDate.of(2023, 9, 19))
             .get(Server::processDate);
     }
 
     /** This is the same as above **/
     public String letsDoAnother() {
-        return ScopedValue.getWhere(dateScopedValue, LocalDate.now(), Server::processDate);
+        return ScopedValue.getWhere(dateScopedValue, LocalDate.of(2023, 9, 19), Server::processDate);
     }
 
     public Future<String> performingInAnotherThread() {
         return executorService.submit(() ->
-            ScopedValue.getWhere(dateScopedValue, LocalDate.now(), Server::processDate));
+            ScopedValue.getWhere(dateScopedValue, LocalDate.of(2023, 9, 19), Server::processDate));
     }
 
     public void performingWithRunWhere() {

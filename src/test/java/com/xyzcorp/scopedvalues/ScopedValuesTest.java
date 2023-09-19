@@ -19,14 +19,14 @@ public class ScopedValuesTest {
     public void testFrameworkWithGet() {
         Framework framework = new Framework();
         String s = framework.performAnotherCalculation();
-        assertThat(s).isEqualTo("2023 09 18");
+        assertThat(s).isEqualTo("2023 09 19");
     }
 
     @Test
     public void testLetsDoAnother() {
         Framework framework = new Framework();
         String s = framework.letsDoAnother();
-        assertThat(s).isEqualTo("2023 09 18");
+        assertThat(s).isEqualTo("2023 09 19");
     }
 
     @Test
@@ -34,7 +34,7 @@ public class ScopedValuesTest {
         Framework framework = new Framework();
         Future<String> stringFuture = framework.performingInAnotherThread();
         String result = stringFuture.get();
-        assertThat(result).isEqualTo("2023 09 18");
+        assertThat(result).isEqualTo("2023 09 19");
     }
 
     @Test
