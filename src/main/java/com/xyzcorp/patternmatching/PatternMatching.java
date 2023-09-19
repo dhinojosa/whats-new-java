@@ -2,6 +2,7 @@ package com.xyzcorp.patternmatching;
 
 public class PatternMatching {
 
+    @SuppressWarnings("PatternVariableCanBeUsed")
     public static String matchOldWay(Object o) {
         if (o instanceof String) {
             String s = (String) o;
@@ -40,13 +41,52 @@ public class PatternMatching {
         }
     }
 
-    static String formatterPatternSwitch(Object obj) {
+    public static String formatterPatternSwitch(Object obj) {
         return switch (obj) {
             case Integer i -> String.format("int %d", i);
             case Long l    -> String.format("long %d", l);
             case Double d  -> String.format("double %f", d);
             case String s  -> String.format("String %s", s);
             default        -> obj.toString();
+        };
+    }
+
+
+    public static String matchRecordPatterns(Object object) {
+        return switch (object) {
+            case Team(String city, String name, int wins, int losses) ->
+               String.format("Team %s from %s with a record of (%d-%d)", name, city, wins, losses);
+            case Integer i -> String.format("int %d", i);
+            case Long l    -> String.format("long %d", l);
+            case Double d  -> String.format("double %f", d);
+            case String s  -> String.format("String %s", s);
+            default        -> object.toString();
+        };
+    }
+
+    public static String matchRecordPatternsWithUnnamedVariables(Object object) {
+        return switch (object) {
+            case Team(String city, String name, int _, _) ->
+                String.format("Team %s from %s", name, city);
+            case Integer i -> String.format("int %d", i);
+            case Long l    -> String.format("long %d", l);
+            case Double d  -> String.format("double %f", d);
+            case String s  -> String.format("String %s", s);
+            default        -> object.toString();
+        };
+    }
+
+    public static String matchRecordPatternsWhen(Object object) {
+        return switch (object) {
+            case Team(String city, String name, _, _) when city.startsWith("M") ->
+                String.format("Team %s from %s, a city that starts with M", name, city);
+            case Team(String city, String name, _, _) ->
+                String.format("Team %s from %s", name, city);
+            case Integer i -> String.format("int %d", i);
+            case Long l    -> String.format("long %d", l);
+            case Double d  -> String.format("double %f", d);
+            case String s  -> String.format("String %s", s);
+            default        -> object.toString();
         };
     }
 }
