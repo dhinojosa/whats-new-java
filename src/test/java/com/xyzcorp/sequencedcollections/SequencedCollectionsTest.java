@@ -69,7 +69,8 @@ public class SequencedCollectionsTest {
 
     @Test
     void testGetFirstFromList() {
-        SequencedCollection<String> sequencedCollection = Arrays.asList(states.split("\n"));
+        SequencedCollection<String> sequencedCollection =
+            Arrays.asList(states.split("\n"));
         String first = sequencedCollection.getFirst();
         Assertions.assertThat(first).isEqualTo("Alaska");
     }
