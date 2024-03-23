@@ -37,7 +37,7 @@ public class PatternMatching {
         switch (s) {
             case null         -> System.out.println("Oops");
             case "Foo", "Bar" -> System.out.println("Great");
-            default           -> System.out.println("Ok");
+            case String x     -> System.out.printf("A string: %s", x);
         }
     }
 
@@ -51,6 +51,14 @@ public class PatternMatching {
         };
     }
 
+    public static String patternMatchOnRecord(Object o) {
+        if (o instanceof Team(String city, String name, int wins, int losses)) {
+            return String.format("Team %s from %s with a record of (%d-%d)", name,
+                city, wins, losses);
+        } else {
+            return "Unknown";
+        }
+    }
 
     public static String matchRecordPatterns(Object object) {
         return switch (object) {
@@ -64,6 +72,9 @@ public class PatternMatching {
         };
     }
 
+    /**
+     * https://openjdk.org/jeps/443
+     */
     public static String matchRecordPatternsWithUnnamedVariables(Object object) {
         return switch (object) {
             case Team(String city, String name, int _, _) ->
