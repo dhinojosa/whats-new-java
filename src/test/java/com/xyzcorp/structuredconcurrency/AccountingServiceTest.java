@@ -1,9 +1,12 @@
 package com.xyzcorp.structuredconcurrency;
 
 import org.assertj.core.api.Assertions;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class AccountingServiceTest {
 
@@ -16,6 +19,20 @@ public class AccountingServiceTest {
         Assertions.assertThat(userInvoice.invoices()).hasSize(3);
         Assertions.assertThat(userInvoice.user().firstName()).isEqualTo("Simon");
         Assertions.assertThat(userInvoice.user().lastName()).isEqualTo("Roberts");
+    }
+
+    @Test
+    void testStructuredConcurrencyWithSubtasks() throws TimeoutException, InterruptedException {
+        UserService userService = new UserService();
+        InvoiceService invoiceService = new InvoiceService();
+        AccountingService accountingService = new AccountingService(userService, invoiceService);
+        Optional<UserInvoices> userInvoiceOptional = accountingService.findAllInvoicesByUserUsingSubtask(90L);
+        Assertions.assertThat(userInvoiceOptional).isNotEmpty();
+        UserInvoices userInvoices = userInvoiceOptional.get();
+        Assertions.assertThat(userInvoices.invoices()).hasSize(3);
+        User user = userInvoices.user();
+        Assertions.assertThat(user.firstName()).isEqualTo("Simon");
+        Assertions.assertThat(user.lastName()).isEqualTo("Roberts");
     }
 
     @Test

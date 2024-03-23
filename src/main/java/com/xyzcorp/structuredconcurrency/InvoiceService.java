@@ -15,8 +15,9 @@ public class InvoiceService {
     public List<Invoice> findAllInvoicesByUserLongTime(long id) {
         System.out.println("findAllInvoicesByUser" + Thread.currentThread());
         try {
-            Thread.sleep(3000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
         return List.of(
