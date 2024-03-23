@@ -15,6 +15,6 @@ public class EvaluatorTest {
     void testAdvancedEvaluation() {
         Expression expression = new Multiply(new Constant(40),
             new Sum(new Constant(40), new Constant(60)));
-        System.out.println(Evaluator.evaluatePatternMatchAdvanced(expression));
+        System.out.println(Evaluator.evaluateRecordPatternMatch(expression));
     }
 }

@@ -15,12 +15,12 @@ public class Evaluator {
      *
      * @since 21
      */
-    static int evaluatePatternMatchAdvanced(Expression expression) {
+    static int evaluateRecordPatternMatch(Expression expression) {
         return switch (expression) {
             case Constant(var n) -> n;
-            case Sum(var left, var right) -> evaluate(left) + evaluate(right);
-            case Subtract(var left, var right) -> evaluate(left) - evaluate(right);
-            case Multiply(var left, var right) -> evaluate(left) * evaluate(right);
+            case Sum(var left, var right) -> evaluateRecordPatternMatch(left) + evaluateRecordPatternMatch(right);
+            case Subtract(var left, var right) -> evaluateRecordPatternMatch(left) - evaluateRecordPatternMatch(right);
+            case Multiply(var left, var right) -> evaluateRecordPatternMatch(left) * evaluateRecordPatternMatch(right);
         };
     }
 }
