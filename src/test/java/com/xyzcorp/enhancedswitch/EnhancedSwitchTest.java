@@ -11,6 +11,11 @@ public class EnhancedSwitchTest {
 
     private final Month birthMonth = JANUARY;
 
+    /**
+     * There is a difference between a statement and an expression
+     * statement does things without any form of return - there is usually mutability
+     * expression does things and returns the result - there is usually *immutability*
+     */
     @SuppressWarnings("EnhancedSwitchMigration")
     @Test
     void testBasicSwitch() {
