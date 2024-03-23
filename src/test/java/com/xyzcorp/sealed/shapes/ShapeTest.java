@@ -15,6 +15,8 @@ public class ShapeTest {
                 String.format("Large Triangle with area: %d", t.area());
             case Triangle t ->
                 String.format("Small Triangle with area: %d", t.area());
+            case Parallelogram p ->
+                String.format("Parallelogram with area: %d", p.area());
             case Rectangle r ->
                 String.format("Rectangle with area: %d", r.area());
         };
@@ -49,5 +51,11 @@ public class ShapeTest {
     void testSquare() {
         String str = printStatement(new Square(10));
         assertThat(str).isEqualTo("Rectangle with area: 100");
+    }
+
+    @Test
+    void testParallelogram() {
+        String str = printStatement(new Parallelogram(10, 40));
+        assertThat(str).isEqualTo("Parallelogram with area: 400");
     }
 }
