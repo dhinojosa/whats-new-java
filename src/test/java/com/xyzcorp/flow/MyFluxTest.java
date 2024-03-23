@@ -1,6 +1,7 @@
 package com.xyzcorp.flow;
 
 import org.junit.jupiter.api.Test;
+import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
 import reactor.core.scheduler.Schedulers;
@@ -11,11 +12,16 @@ public class MyFluxTest {
 
     @Test
     void testFluxWithEmitter() {
-        Flux.create(fluxSink -> {
+        Flux<Integer> integerFlux = Flux.create(fluxSink -> {
             fluxSink.next(10);
             fluxSink.next(12);
             fluxSink.complete();
         }, FluxSink.OverflowStrategy.LATEST);
+
+
+        integerFlux.subscribe(System.out::println,
+            Throwable::printStackTrace,
+            () -> System.out.println("Complete"));
     }
 
     @Test
