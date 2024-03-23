@@ -29,11 +29,19 @@ public class RecordsTest {
     }
 
     @Test
+    void testThatRecordsExtendFromJavaLangRecord() {
+        Album album = new Album("Joshua Tree",
+            new Genre("Alternative"), new Artist("", "", "U2"));
+
+        Assertions.assertThat(album).isInstanceOf(Record.class);
+    }
+
+    @Test
     void testExtendingByComposition() {
-        record Teamz(String name, String city){
+        record Teamz(String name, String city) {
         }
         record BaseballTeam(Teamz teamz, String startingPitcher) {
-            public static BaseballTeam of (String name, String city, String startingPitcher) {
+            public static BaseballTeam of(String name, String city, String startingPitcher) {
                 return new BaseballTeam(new Teamz(name, city), startingPitcher);
             }
         }
