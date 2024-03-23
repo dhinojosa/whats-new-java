@@ -26,8 +26,7 @@ public class StringTemplatesTest {
           <body>
             <p>\{text}</p>
           </body>
-        </html>
-        """;
+        </html>""";
         assertThat(html).isEqualTo("""
         <html>
           <head>
@@ -36,8 +35,7 @@ public class StringTemplatesTest {
           <body>
             <p>Hello, world</p>
           </body>
-        </html>
-        """);
+        </html>""");
     }
 
     @Test
