@@ -10,7 +10,7 @@ public class BasicVirtualThread {
 
         try (ExecutorService executorService =
                  Executors.newThreadPerTaskExecutor(tf)) {
-            Future<Integer> submit = executorService.submit(() -> {
+            Future<Integer> future = executorService.submit(() -> {
                 System.out.format("Running in Thread: %s\n",
                     Thread.currentThread());
                 System.out.format("Is our thread virtual? %b\n",
@@ -21,7 +21,7 @@ public class BasicVirtualThread {
 
             //This is now a join where it was a block. Virtual Threads are
             // different
-            System.out.println(submit.get());//We shall no fear of blocking
+            System.out.println(future.get());//We shall no fear of blocking
         }
     }
 }

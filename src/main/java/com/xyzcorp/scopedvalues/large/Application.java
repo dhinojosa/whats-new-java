@@ -1,6 +1,5 @@
 package com.xyzcorp.scopedvalues.large;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.NoSuchElementException;
 import java.util.concurrent.StructuredTaskScope;
@@ -15,7 +14,6 @@ public class Application {
         ScopedValue.where(KEY, "Bon Jour").run(task());
     }
 
-    @NotNull
     private static Runnable task() {
         return () -> {
             printThreadAndKey("In task, before structured scope");

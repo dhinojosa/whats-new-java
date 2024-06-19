@@ -1,6 +1,5 @@
 package com.xyzcorp.scopedvalues.api;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.StructuredTaskScope;
 
@@ -112,7 +111,6 @@ public class ScopedValuesAPI {
         ScopedValue.runWhere(GREETING_KEY, "नमस्ते", printGreetingKey());
     }
 
-    @NotNull
     private static Runnable printGreetingKey() {
         return () -> {
             try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {

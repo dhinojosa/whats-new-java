@@ -27,7 +27,6 @@ public class PatternMatchingTest {
         PatternMatching.matchString(null);
     }
 
-
     @Test
     void testFormattedString() {
         String result = PatternMatching.formatterPatternSwitch(LocalDate.of(2023, 9, 19));
@@ -55,10 +54,5 @@ public class PatternMatchingTest {
         Team mariners = new Team("Minnesota", "Twins", 30, 12);
         String result = PatternMatching.matchRecordPatternsWhen(mariners);
         assertThat(result).isEqualTo("Team Twins from Minnesota, a city that starts with M");
-    }
-
-    @Test
-    void testPatternMatchOnRecord() {
-
     }
 }

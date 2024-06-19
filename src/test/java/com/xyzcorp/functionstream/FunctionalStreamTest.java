@@ -122,7 +122,7 @@ public class FunctionalStreamTest {
                 .collect(Collectors.teeing(
                     Collectors.summingDouble(value -> value),
                     Collectors.counting(),
-                    (sum, count) -> sum / count));
+                    (sum, count) -> sum /  count));
         System.out.println(result);
     }
 
