@@ -2,8 +2,8 @@
     "java.configuration.updateBuildConfiguration": "interactive",
     "java.configuration.runtimes": [
         {
-             "name": "JavaSE-21",
-             "path": "~/.sdkman/candidates/java/21.ea.35-open/"
+             "name": "JavaSE-22",
+             "path": "/usr/local/openjdk-22/"
         }
     ]
 }
