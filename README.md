@@ -11,8 +11,8 @@ NOTE: JEPS only includes software features
     * What do you do?
     * What is your experience with Java?
     * What IDE do you usually use?
-    * How would grade (Novice, Intermediate, Advanced)
-      your experience with Lambdas/Streams/Optionals?
+    * How would you grade (Novice, Intermediate, Advanced) your experience with Lambdas/Streams/Optionals?
+    * What Operating System do you use for work/home?  
     * What Java version are you using for work/home?
     * What other JVM languages do you use?
 * SDKMan.io
