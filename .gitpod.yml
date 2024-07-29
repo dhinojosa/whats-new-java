@@ -5,7 +5,7 @@
 
 tasks:
   - name: Setup & Build
-    before: sdk install java 21.ea.35-open < /dev/null
+    before: sdk install java 22.0.2-tem < /dev/null
     init: mvn clean install -DskipTests=true
 vscode:
   extensions:

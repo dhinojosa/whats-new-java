@@ -3,7 +3,7 @@
     "java.configuration.runtimes": [
         {
              "name": "JavaSE-22",
-             "path": "/usr/local/openjdk-22/"
+             "path": "/home/gitpod/.sdkman/candidates/java/22.0.2-tem"
         }
     ]
 }
