@@ -15,7 +15,7 @@ public class TypeInferenceTest {
     @SuppressWarnings("RedundantTypeArguments")
     @Test
     void testBeforeTypeInference() {
-        List<String> cs = Collections.<String>emptyList();
+        List<String> cs = Collections.emptyList();
         assertThat(cs).isEmpty();
     }
 

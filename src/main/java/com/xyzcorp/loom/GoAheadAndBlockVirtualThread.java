@@ -21,9 +21,11 @@ public class GoAheadAndBlockVirtualThread {
             .ofVirtual()
             .name("thread-go-and-block")
             .factory();
+        var numProcessors= Runtime.getRuntime().availableProcessors();
+        System.out.println(numProcessors);
         try (
             ExecutorService executorService = Executors.newThreadPerTaskExecutor(tf)) {
-            //ExecutorService executorService = Executors.newFixedThreadPool(20)) {
+            //ExecutorService executorService = Executors.newFixedThreadPool(numProcessors)) {
             Stream<Callable<Integer>> callableStream =
                 Stream.iterate(0, integer -> integer + 1).map(i -> () -> {
                     System.out.format("Process(%d) Started: inside of Thread " +
@@ -37,7 +39,7 @@ public class GoAheadAndBlockVirtualThread {
                 });
 
             List<Callable<Integer>> callables =
-                callableStream.limit(600).toList();
+                callableStream.limit(80).toList();
             executorService.invokeAll(callables);
             executorService.shutdown();
             System.out.println("Done:" + (System.currentTimeMillis() - startTime));

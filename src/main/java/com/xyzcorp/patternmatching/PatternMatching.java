@@ -37,6 +37,7 @@ public class PatternMatching {
         switch (s) {
             case null         -> System.out.println("Oops");
             case "Foo", "Bar" -> System.out.println("Great");
+            case String x when x.startsWith("Hello") -> System.out.printf("A greeting: %s", x);
             case String x     -> System.out.printf("A string: %s", x);
         }
     }
@@ -47,8 +48,18 @@ public class PatternMatching {
             case Long l    -> String.format("long %d", l);
             case Double d  -> String.format("double %f", d);
             case String s  -> String.format("String %s", s);
+            case null      -> "null";
             default        -> obj.toString();
         };
+    }
+
+    public static String patternMatchOnRecordWithoutRecordMatching(Object o) {
+        if (o instanceof Team t) {
+            return String.format("Team %s from %s with a record of (%d-%d)", t.name(),
+                t.city(), t.wins(), t.losses());
+        } else {
+            return "Unknown";
+        }
     }
 
     public static String patternMatchOnRecord(Object o) {
@@ -62,7 +73,7 @@ public class PatternMatching {
 
     public static String matchRecordPatterns(Object object) {
         return switch (object) {
-            case Team(String city, String name, int wins, int losses) ->
+            case Team(var city, var name, var wins, var losses) ->
                String.format("Team %s from %s with a record of (%d-%d)", name, city, wins, losses);
             case Integer i -> String.format("int %d", i);
             case Long l    -> String.format("long %d", l);

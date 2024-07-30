@@ -6,6 +6,7 @@ module whats.newjava {
     requires java.net.http;
     requires java.sql;
     requires java.naming;
+    requires java.base;
     exports com.xyzcorp.httpclient;
     opens com.xyzcorp.httpclient;
 }

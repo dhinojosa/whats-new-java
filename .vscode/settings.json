@@ -5,5 +5,6 @@
              "name": "JavaSE-22",
              "path": "/home/gitpod/.sdkman/candidates/java/22.0.2-tem"
         }
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }

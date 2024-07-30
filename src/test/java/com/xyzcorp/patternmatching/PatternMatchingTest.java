@@ -34,6 +34,15 @@ public class PatternMatchingTest {
 
         String result2 = PatternMatching.formatterPatternSwitch(10L);
         assertThat(result2).isEqualTo("long 10");
+
+        String result3 = PatternMatching.formatterPatternSwitch(null);
+        assertThat(result3).isEqualTo("null");
+    }
+
+    @Test
+    void testStringMatchWithRecordMatchingWithouRecordMatching() {
+        String result = PatternMatching.patternMatchOnRecordWithoutRecordMatching(new Team("Seattle", "Mariners", 30, 12));
+        assertThat(result).isEqualTo("Team Mariners from Seattle with a record of (30-12)");
     }
 
     @Test

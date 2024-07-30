@@ -79,4 +79,16 @@ public class EnhancedSwitchTest {
         };
         assertThat(result).isEqualTo(31);
     }
+
+    @Test
+    void testPerformingExpressionInsideOfSysOut() {
+        System.out.println(switch (birthMonth) {
+            case JANUARY, MARCH, MAY, JULY, AUGUST, OCTOBER, DECEMBER:
+                yield 31;
+            case APRIL, JUNE, SEPTEMBER, NOVEMBER:
+                yield 30;
+            default:
+                yield 28;
+        });
+    }
 }
