@@ -18,6 +18,7 @@ NOTE: JEPS only includes software features
 * SDKMan.io
 * [Java Almanac](https://javaalmanac.io/)
 * [Java Playground]([https://javaalmanac.io/](https://dev.java/playground/))
+* `mcs`
 * [JDK 9](https://docs.oracle.com/javase/9/docs/api/overview-summary.html)
     * JShell [JEP 222](https://openjdk.java.net/jeps/222)
     * Immutable/Convenience Factory Methods for Collections [JEP 269](https://openjdk.java.net/jeps/269)
