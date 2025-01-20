@@ -1,7 +1,6 @@
 package com.xyzcorp.structuredconcurrency;
 
 import org.assertj.core.api.Assertions;
-import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
