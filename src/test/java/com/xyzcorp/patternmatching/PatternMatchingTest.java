@@ -40,12 +40,6 @@ public class PatternMatchingTest {
     }
 
     @Test
-    void testStringMatchWithRecordMatchingWithouRecordMatching() {
-        String result = PatternMatching.patternMatchOnRecordWithoutRecordMatching(new Team("Seattle", "Mariners", 30, 12));
-        assertThat(result).isEqualTo("Team Mariners from Seattle with a record of (30-12)");
-    }
-
-    @Test
     void testStringMatchWithRecordMatching() {
         String result = PatternMatching.matchRecordPatterns(new Team("Seattle", "Mariners", 30, 12));
         assertThat(result).isEqualTo("Team Mariners from Seattle with a record of (30-12)");

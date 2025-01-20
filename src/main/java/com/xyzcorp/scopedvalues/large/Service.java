@@ -13,7 +13,7 @@ public class Service {
             var employee = scope.fork(repository::find);
             scope.join();
             printThreadAndKey("End: In Service::run()");
-            return STR."Found id of \{id.get()} and employee \{employee.get()}";
+            return String.format("Found id of %d and employee %s", id.get(), employee.get());
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

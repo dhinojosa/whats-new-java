@@ -25,7 +25,7 @@ public class GoAheadAndBlockVirtualThread {
         System.out.println(numProcessors);
         try (
             ExecutorService executorService = Executors.newThreadPerTaskExecutor(tf)) {
-            //ExecutorService executorService = Executors.newFixedThreadPool(numProcessors)) {
+//            ExecutorService executorService = Executors.newFixedThreadPool(numProcessors)) {
             Stream<Callable<Integer>> callableStream =
                 Stream.iterate(0, integer -> integer + 1).map(i -> () -> {
                     System.out.format("Process(%d) Started: inside of Thread " +

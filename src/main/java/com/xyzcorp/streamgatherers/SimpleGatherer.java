@@ -40,12 +40,11 @@ public class SimpleGatherer {
                     return true;
                 }
             };
-     
+
         }
     }
     public static void main(String[] args) {
        var result = IntStream.rangeClosed(1, 100).boxed().gather(new MyGatherer()).toList();
-       IntStream.rangeClosed(1, 100).boxed().gather(Gatherer.of(Gatherer.defaultInitializer()))
        System.out.println(result);
     }
 

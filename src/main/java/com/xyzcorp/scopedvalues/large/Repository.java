@@ -9,7 +9,7 @@ public class Repository {
     }
 
     public Employee find() {
-        return ScopedValue.where(Application.KEY, "Buenos Dias").get(() -> {
+        return ScopedValue.where(Application.KEY, "Buenos Dias").call(() -> {
             printThreadAndKey("In Repository#find()");
             return new Employee("James", "Gosling");
         });

@@ -16,7 +16,6 @@ public class ScopedValuesAPI {
         whereAndGet();
         whereAndCall();
         whereAndRun();
-        getWhere();
         callWhere();
         runWhere();
         doubleWhereAndCall();
@@ -31,15 +30,10 @@ public class ScopedValuesAPI {
      * `call`.
      */
     private static void whereAndGet() {
-        String outerResult = ScopedValue.where(GREETING_KEY, "Hello").get(() -> {
-            try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
-                var result = scope.fork(() -> STR."\{GREETING_KEY.get()}!");
-                scope.join();
-                return result.get();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        String outerResult = ScopedValue
+            .where(GREETING_KEY, "Hello")
+            .where(FAREWELL_KEY, "Goodbye")
+            .get(GREETING_KEY);
         System.out.println(outerResult);
     }
 
@@ -51,7 +45,7 @@ public class ScopedValuesAPI {
     private static void whereAndCall() throws Exception {
         String outerResult = ScopedValue.where(GREETING_KEY, "Bon Jour").call(() -> {
             try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
-                var result = scope.fork(() -> STR."\{GREETING_KEY.get()}!");
+                var result = scope.fork(() -> GREETING_KEY.get() + "!");
                 scope.join();
                 return result.get();
             } catch (InterruptedException e) {
@@ -70,21 +64,6 @@ public class ScopedValuesAPI {
         ScopedValue.where(GREETING_KEY, "Здравейте").run(printGreetingKey());
     }
 
-    /**
-     * Synonymous with where().get()
-     */
-    private static void getWhere() {
-        String outerResult = ScopedValue.getWhere(GREETING_KEY, "Hola", () -> {
-            try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
-                var result = scope.fork(() -> STR."\{GREETING_KEY.get()}!");
-                scope.join();
-                return result.get();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        });
-        System.out.println(outerResult);
-    }
 
     /**
      * Synonymous with `where().call()`
@@ -94,7 +73,7 @@ public class ScopedValuesAPI {
     private static void callWhere() throws Exception {
         String outerResult = ScopedValue.callWhere(GREETING_KEY, "こんにちは", () -> {
             try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
-                var result = scope.fork(() -> STR."\{GREETING_KEY.get()}!");
+                var result = scope.fork(() -> GREETING_KEY.get() + "!");
                 scope.join();
                 return result.get();
             } catch (InterruptedException e) {
@@ -114,7 +93,7 @@ public class ScopedValuesAPI {
     private static Runnable printGreetingKey() {
         return () -> {
             try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
-                var result = scope.fork(() -> STR."\{GREETING_KEY.get()}!");
+                var result = scope.fork(() -> GREETING_KEY.get() + "!");
                 scope.join();
                 System.out.println(result.get());
             } catch (InterruptedException e) {
@@ -126,10 +105,10 @@ public class ScopedValuesAPI {
     private static void doubleWhereAndCall() throws Exception {
         String outerResult = ScopedValue.where(GREETING_KEY, "Γειά σου").where(FAREWELL_KEY, "Antio sas").call(() -> {
             try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
-                var helloSubtask = scope.fork(() -> STR."\{GREETING_KEY.get()}!");
-                var goodbyeSubtask = scope.fork(() -> STR."\{FAREWELL_KEY.get()}!");
+                var helloSubtask = scope.fork(() -> GREETING_KEY.get() + "!");
+                var goodbyeSubtask = scope.fork(() -> FAREWELL_KEY.get() + "!");
                 scope.join();
-                return STR."\{helloSubtask.get()} \{goodbyeSubtask.get()}";
+                return helloSubtask.get() + " " + goodbyeSubtask.get();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -146,10 +125,10 @@ public class ScopedValuesAPI {
     private static void isBound() throws Exception {
         String outerResult = ScopedValue.where(GREETING_KEY, "你好").call(() -> {
             try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
-                var helloSubtask = scope.fork(() -> STR."\{GREETING_KEY.get()}!");
+                var helloSubtask = scope.fork(() -> GREETING_KEY.get() + "!");
                 scope.join();
                 GREETING_KEY.isBound();
-                return STR."\{helloSubtask.get()}";
+                return helloSubtask.get();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -166,9 +145,9 @@ public class ScopedValuesAPI {
     private static void orElse() throws Exception {
         String outerResult = ScopedValue.where(GREETING_KEY, "Selamat datang").call(() -> {
             try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
-                var helloSubtask = scope.fork(() -> STR."\{GREETING_KEY.orElse("Olá")}!");
+                var helloSubtask = scope.fork(() -> GREETING_KEY.orElse("Olá") + "!");
                 scope.join();
-                return STR."\{helloSubtask.get()}";
+                return helloSubtask.get();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

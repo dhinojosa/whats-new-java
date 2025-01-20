@@ -53,15 +53,6 @@ public class PatternMatching {
         };
     }
 
-    public static String patternMatchOnRecordWithoutRecordMatching(Object o) {
-        if (o instanceof Team t) {
-            return String.format("Team %s from %s with a record of (%d-%d)", t.name(),
-                t.city(), t.wins(), t.losses());
-        } else {
-            return "Unknown";
-        }
-    }
-
     public static String patternMatchOnRecord(Object o) {
         if (o instanceof Team(String city, String name, int wins, int losses)) {
             return String.format("Team %s from %s with a record of (%d-%d)", name,
