@@ -58,4 +58,25 @@ public class PatternMatchingTest {
         String result = PatternMatching.matchRecordPatternsWhen(mariners);
         assertThat(result).isEqualTo("Team Twins from Minnesota, a city that starts with M");
     }
+
+    @Test
+    void testWebStatus() {
+        var webStatus = new WebStatus(200, "The request was successful");
+        String result = PatternMatching.matchPrimitiveStatus(webStatus);
+        assertThat(result).isEqualTo("OK");
+    }
+
+    @Test
+    void testWebStatusWithServerError() {
+        var webStatus = new WebStatus(520, "Awkward Server Response");
+        String result = PatternMatching.matchPrimitiveStatus(webStatus);
+        assertThat(result).isEqualTo("Server Error");
+    }
+
+    @Test
+    void testWebStatusWithTeapotCode() {
+        var webStatus = new WebStatus(418, "I'm a teapot");
+        String result = PatternMatching.matchPrimitiveStatus(webStatus);
+        assertThat(result).isEqualTo("Unknown");
+    }
 }

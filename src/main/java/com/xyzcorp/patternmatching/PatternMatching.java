@@ -102,4 +102,15 @@ public class PatternMatching {
             default        -> object.toString();
         };
     }
+
+    public static String matchPrimitiveStatus(WebStatus webStatus) {
+        return switch (webStatus.code()) {
+            case 200 -> "OK";
+            case 404 -> "Not Found";
+            case int n when n >= 500 && n < 600 -> "Server Error";
+            default -> "Unknown";
+        };
+
+
+    }
 }
