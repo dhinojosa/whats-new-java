@@ -44,6 +44,15 @@ public class AccountingServiceTest {
     }
 
     @Test
+    void testStructuredConcurrencyWithLatentInvoiceService() throws ExecutionException, InterruptedException, TimeoutException {
+        UserService userService = new UserService();
+        InvoiceService invoiceService = new InvoiceService();
+        AccountingService accountingService = new AccountingService(userService, invoiceService);
+        Assertions.assertThatThrownBy(() -> accountingService.findAllInvoicesByUserWithLatencyService(90L))
+            .isInstanceOf(TimeoutException.class);
+    }
+
+    @Test
     void testStructuredConcurrencyWithErrorAndLongerInvoiceService() {
         UserService userService = new UserService();
         InvoiceService invoiceService = new InvoiceService();
@@ -69,5 +78,13 @@ public class AccountingServiceTest {
         String result = accountingService.findAllEitherUserOrInvoicesFromUserServiceWithLatency(90L);
         String expected = "A list of [Invoice[number=402, amount=1120.0], Invoice[number=1402, amount=1220.0], Invoice[number=671, amount=1220.0]]";
         Assertions.assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testStructuredConcurrencyWithOnSuccessWithBothServicesThrowingError() throws ExecutionException, InterruptedException {
+        UserService userService = new UserService();
+        InvoiceService invoiceService = new InvoiceService();
+        AccountingService accountingService = new AccountingService(userService, invoiceService);
+        String result = accountingService.findAllEitherUserOrInvoicesButBothAreFailures(90L);
     }
 }
