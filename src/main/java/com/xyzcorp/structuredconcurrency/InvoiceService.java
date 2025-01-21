@@ -26,4 +26,8 @@ public class InvoiceService {
             new Invoice("671", 1220.00F)
         );
     }
+
+    public List<Invoice> findAllInvoicesByUserError(long id) {
+        throw new RuntimeException("Couldn't find invoices");
+    }
 }

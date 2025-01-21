@@ -7,6 +7,8 @@ import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 public class AccountingServiceTest {
 
     @Test
@@ -39,7 +41,7 @@ public class AccountingServiceTest {
         UserService userService = new UserService();
         InvoiceService invoiceService = new InvoiceService();
         AccountingService accountingService = new AccountingService(userService, invoiceService);
-        Assertions.assertThatThrownBy(() -> accountingService.findAllInvoicesByUserWithFailedUserService(90L))
+        assertThatThrownBy(() -> accountingService.findAllInvoicesByUserWithFailedUserService(90L))
             .isInstanceOf(ExecutionException.class);
     }
 
@@ -48,7 +50,7 @@ public class AccountingServiceTest {
         UserService userService = new UserService();
         InvoiceService invoiceService = new InvoiceService();
         AccountingService accountingService = new AccountingService(userService, invoiceService);
-        Assertions.assertThatThrownBy(() -> accountingService.findAllInvoicesByUserWithLatencyService(90L))
+        assertThatThrownBy(() -> accountingService.findAllInvoicesByUserWithLatencyService(90L))
             .isInstanceOf(TimeoutException.class);
     }
 
@@ -57,7 +59,7 @@ public class AccountingServiceTest {
         UserService userService = new UserService();
         InvoiceService invoiceService = new InvoiceService();
         AccountingService accountingService = new AccountingService(userService, invoiceService);
-        Assertions.assertThatThrownBy(() -> accountingService.findAllInvoicesByUserWithFailedUserService(90L))
+        assertThatThrownBy(() -> accountingService.findAllInvoicesByUserWithFailedUserService(90L))
             .isInstanceOf(ExecutionException.class);
     }
 
@@ -85,6 +87,6 @@ public class AccountingServiceTest {
         UserService userService = new UserService();
         InvoiceService invoiceService = new InvoiceService();
         AccountingService accountingService = new AccountingService(userService, invoiceService);
-        String result = accountingService.findAllEitherUserOrInvoicesButBothAreFailures(90L);
+        assertThatThrownBy(() -> accountingService.findAllEitherUserOrInvoicesButBothAreFailures(90L));
     }
 }

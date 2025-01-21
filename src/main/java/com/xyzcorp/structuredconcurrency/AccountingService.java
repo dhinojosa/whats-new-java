@@ -78,12 +78,12 @@ public class AccountingService {
         }
     }
 
-    public UserInvoices findAllInvoicesByUserWithLatencyService(long id) throws InterruptedException, ExecutionException {
+    public UserInvoices findAllInvoicesByUserWithLatencyService(long id) throws InterruptedException, ExecutionException, TimeoutException {
         try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
-            Supplier<User> user = scope.fork(() -> userService.findUserError(id));
+            Supplier<User> user = scope.fork(() -> userService.findUser(id));
             Supplier<List<Invoice>> order = scope.fork(() -> invoiceService.findAllInvoicesByUserLongTime(id));
 
-            scope.join()            // Join both subtasks
+            scope.joinUntil(Instant.now().plusSeconds(3))            // Join both subtasks
                 .throwIfFailed();  // ... and propagate errors
 
             // Here, both subtasks have succeeded, so compose their results
@@ -107,6 +107,18 @@ public class AccountingService {
         try (var scope = new StructuredTaskScope.ShutdownOnSuccess<>()) {
             scope.fork(() -> userService.findUserLongTime(id));
             scope.fork(() -> invoiceService.findAllInvoicesByUser(id));
+            return switch (scope.join().result()) {
+                case User(var firstName, var lastName) -> String.format("User: %s %s", firstName, lastName);
+                case List<?> list -> String.format("A list of %s", list);
+                default -> "Unknown";
+            };
+        }
+    }
+
+    public String findAllEitherUserOrInvoicesButBothAreFailures(long id) throws InterruptedException, ExecutionException {
+        try (var scope = new StructuredTaskScope.ShutdownOnSuccess<>()) {
+            scope.fork(() -> userService.findUserError(id));
+            scope.fork(() -> invoiceService.findAllInvoicesByUserError(id));
             return switch (scope.join().result()) {
                 case User(var firstName, var lastName) -> String.format("User: %s %s", firstName, lastName);
                 case List<?> list -> String.format("A list of %s", list);
