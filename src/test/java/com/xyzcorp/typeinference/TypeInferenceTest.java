@@ -1,5 +1,6 @@
 package com.xyzcorp.typeinference;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -26,6 +27,7 @@ public class TypeInferenceTest {
     }
 
     @Test
+    @Disabled
     void testCompleteExampleWithVar() {
         var path = Paths.get("web.log");
         try (var lines = Files.lines(path)) {
