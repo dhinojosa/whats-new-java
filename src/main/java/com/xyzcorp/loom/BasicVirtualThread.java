@@ -21,7 +21,7 @@ public class BasicVirtualThread {
 
             //This is now a join where it was a block. Virtual Threads are
             // different
-            System.out.println(future.get());//We shall no fear of blocking
+            System.out.println(future.get()); //We shall not fear blocking
         }
     }
 }
