@@ -3,7 +3,7 @@ package com.xyzcorp.scopedvalues.mainthread;
 import java.util.NoSuchElementException;
 
 public class MainThreadScopedValues {
-    static ScopedValue<String> KEY = ScopedValue.newInstance();
+    private static ScopedValue<String> KEY = ScopedValue.newInstance();
 
     /**
      * The main method in the ChainedScopedValues class.
