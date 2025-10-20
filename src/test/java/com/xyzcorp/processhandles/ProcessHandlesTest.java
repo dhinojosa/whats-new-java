@@ -19,7 +19,7 @@ public class ProcessHandlesTest {
     @Test
     void createProcess() throws IOException, InterruptedException {
         Process process = Runtime.getRuntime().exec(
-            new String[]{"python", "-version"});
+            new String[]{"java", "-version"});
         System.out.println(process.pid());
         Thread.sleep(10000);
     }
