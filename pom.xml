@@ -19,7 +19,7 @@
         <jackson.version>2.14.0</jackson.version>
         <maven-surefire-report-plugin.version>2.21.0
         </maven-surefire-report-plugin.version>
-        <maven.compiler.release>23</maven.compiler.release>
+        <maven.compiler.release>25</maven.compiler.release>
     </properties>
 
     <dependencyManagement>
@@ -117,6 +117,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <compilerArgs>--enable-preview</compilerArgs>
+                    <source>24</source>
+                    <target>24</target>
                 </configuration>
             </plugin>
         </plugins>
