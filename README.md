@@ -15,7 +15,7 @@ NOTE: JEPS only includes software features
     * What Operating System do you use for work/home?  
     * What Java version are you using for work/home?
     * What other JVM languages do you use?
-* SDKMan.io
+* Installation and Management of Java: Manual Installtion, SDKMan.io, `jenv`, nix
 * [Java Almanac](https://javaalmanac.io/)
 * [Java Playground]([https://javaalmanac.io/](https://dev.java/playground/))
 * `mcs`
