@@ -16,6 +16,5 @@ public class UsingGatherers {
             .map(e -> Map.entry(e.getKey(), e.getValue().size()))
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         System.out.println(result);
-
     }
 }
