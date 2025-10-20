@@ -3,7 +3,7 @@
     "java.configuration.runtimes": [
         {
              "name": "JavaSE-25",
-             "path": "/usr/local/jdk-25"
+             "path": "/usr/local/openjdk-25"
         }
     ],
     "java.debug.settings.onBuildFailureProceed": true
