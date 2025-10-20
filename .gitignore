@@ -6,3 +6,5 @@ target
 .settings
 **/*.swp
 **/*.swo
+stablevalues/lib/*
+multi-file/dependencies/libs/*
