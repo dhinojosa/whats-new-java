@@ -1,4 +1,4 @@
-# What's new in Java 2024
+# What's new in Java
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dhinojosa/whats-new-java)
 
