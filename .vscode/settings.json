@@ -2,8 +2,8 @@
     "java.configuration.updateBuildConfiguration": "interactive",
     "java.configuration.runtimes": [
         {
-             "name": "JavaSE-23",
-             "path": "/home/gitpod/.sdkman/candidates/java/23-tem"
+             "name": "JavaSE-25",
+             "path": "/usr/local/jdk-25"
         }
     ],
     "java.debug.settings.onBuildFailureProceed": true
