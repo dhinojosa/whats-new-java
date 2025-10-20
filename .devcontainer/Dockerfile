@@ -1,8 +1,6 @@
 # Use a base image with a Linux distribution
 FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu
 
-
-
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     curl \
@@ -12,12 +10,11 @@ RUN apt-get update && apt-get install -y \
 
 USER root
 
-# Download and install OpenJDK 22
-RUN curl -L -o openjdk-22.0.1_linux-x64_bin.tar.gz https://download.java.net/java/GA/jdk22.0.1/c7ec1332f7bb44aeba2eb341ae18aca4/8/GPL/openjdk-22.0.1_linux-x64_bin.tar.gz \
-    && tar -xzf openjdk-22.0.1_linux-x64_bin.tar.gz -C /usr/local/ \
-    && rm openjdk-22.0.1_linux-x64_bin.tar.gz \
-    && mv /usr/local/jdk-22.0.1 /usr/local/openjdk-22
-
+# Download and install OpenJDK 25
+RUN curl -L -o openjdk-25_linux-x64_bin.tar.gz https://download.java.net/java/GA/jdk25/bd75d5f9689641da8e1daabeccb5528b/36/GPL/openjdk-25_linux-x64_bin.tar.gz \
+    && tar -xzf openjdk-25_linux-x64_bin.tar.gz -C /usr/local/ \
+    && rm openjdk-25_linux-x64_bin.tar.gz \
+    && mv /usr/local/jdk-25 /usr/local/openjdk-25
 # Set JAVA_HOME environment variable
 ENV JAVA_HOME=/usr/local/openjdk-22
 ENV PATH=${JAVA_HOME}/bin:${PATH}
